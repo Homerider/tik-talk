@@ -7,6 +7,7 @@ import {ProfileHeaderComponent} from "../../common-ui/profile-header/profile-hea
 import {SvgIconComponent} from "../../common-ui/svg-icon/svg-icon.component";
 import {ImgUrlPipe} from "../../helpers/pipes/img-url.pipe";
 import {ProfileService} from "../../data/services/profile.service";
+import {PostFeedComponent} from "./post-feed/post-feed.component";
 
 @Component({
   selector: 'app-profile-page',
@@ -19,6 +20,7 @@ import {ProfileService} from "../../data/services/profile.service";
     NgForOf,
     ImgUrlPipe,
     RouterLinkActive,
+    PostFeedComponent,
   ],
   templateUrl: './profile-page.component.html',
   styleUrl: './profile-page.component.scss'
