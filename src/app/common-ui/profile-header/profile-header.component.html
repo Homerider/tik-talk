@@ -1,6 +1,6 @@
 @if (profile(); as profile) {
     @if (profile.avatarUrl) {
-        <img [src]="profile.avatarUrl | imgUrl" alt="">
+        <img [src]="profile.avatarUrl | imgUrl" alt="" class="img-avatar">
     } @else {
         <img src="/assets/imgs/avatar-placeholder.png" alt="">
     }
