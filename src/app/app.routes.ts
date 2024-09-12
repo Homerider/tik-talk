@@ -5,6 +5,7 @@ import {ProfilePageComponent} from "./pages/profile-page/profile-page.component"
 import {LayoutComponent} from "./common-ui/layout/layout.component";
 import {canActivateAuth} from "./auth/access.guard";
 import {SettingsPageComponent} from "./pages/settings-page/settings-page.component";
+import {CommunitiesPagesComponent} from "./pages/communities-pages/communities-pages.component";
 
 export const routes: Routes = [
   {
@@ -13,7 +14,7 @@ export const routes: Routes = [
       {path: 'profile/:id', component: ProfilePageComponent},
       {path: 'search', component: SearchPageComponent},
       {path: 'settings', component: SettingsPageComponent},
-
+      {path: 'communities', component: CommunitiesPagesComponent}
     ],
     canActivate: [canActivateAuth]
   },

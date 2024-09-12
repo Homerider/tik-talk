@@ -40,9 +40,13 @@
     </label>
     </div>
 
-    <div>
+    <div class="settings-btn-footer">
+        <a class="btn-content-out" [routerLink]="['/login']">
+            <svg icon="out" class="content-icon"></svg>
+        </a>
         <div>
             <button class="btn save" (click)="onSave()">Сохранить</button>
         </div>
     </div>
+
 </form>

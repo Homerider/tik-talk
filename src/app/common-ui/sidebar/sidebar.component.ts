@@ -41,6 +41,11 @@ export class SidebarComponent {
       link: 'chats'
     },
     {
+      label: 'Сообщества',
+      icon: 'communities',
+      link: 'communities'
+    },
+    {
       label: 'Поиск',
       icon: 'search',
       link: 'search'

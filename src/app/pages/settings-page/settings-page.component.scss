@@ -26,6 +26,34 @@
   grid-gap: 20px;
 }
 
+.settings-btn-footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-content-out {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--primary-color);
+  border-radius: 4px;
+
+  &:hover {
+    .content-icon {
+      color: var(--light-color)
+    }
+    border: 1px solid var(--light-color);
+  }
+}
+
+.content-icon {
+  width: 16px;
+  height: 16px;
+  color: var(--primary-color);
+}
+
 .save {
   &:hover {
     background: var(--light-color);
