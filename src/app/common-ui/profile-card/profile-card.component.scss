@@ -36,3 +36,30 @@
   gap: 4px;
   height: min-content;
 }
+
+.profile-card__action-btn {
+  display: flex;
+}
+
+.profile-card-btn {
+  width: 170px;
+  height: 44px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--primary-color);
+  border-radius: 4px;
+
+  .svg-subscribe-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  &:hover,
+  &:focus {
+    .svg-subscribe-icon {
+      color: var(--light-color);
+    }
+    border: 1px solid var(--light-color);
+  }
+}

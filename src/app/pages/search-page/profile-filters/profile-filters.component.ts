@@ -3,13 +3,15 @@ import {AvatarUploadComponent} from "../../settings-page/avatar-upload/avatar-up
 import {FormBuilder, ReactiveFormsModule} from "@angular/forms";
 import {ProfileService} from "../../../data/services/profile.service";
 import {debounceTime, startWith, Subscription, switchMap} from "rxjs";
+import {SvgIconComponent} from "../../../common-ui/svg-icon/svg-icon.component";
 
 @Component({
   selector: 'app-profile-filters',
   standalone: true,
   imports: [
     AvatarUploadComponent,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SvgIconComponent
   ],
   templateUrl: './profile-filters.component.html',
   styleUrl: './profile-filters.component.scss'
