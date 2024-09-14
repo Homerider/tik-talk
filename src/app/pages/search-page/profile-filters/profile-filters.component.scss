@@ -3,7 +3,7 @@
   background: var(--dark-color);
   border: 1px solid var(--light-color);
   display: grid;
-  grid-template-columns: repeat(4, 250px) 50px;
+  grid-template-columns: repeat(4, 1fr) 50px;
   grid-gap: 60px;
   position: relative;
 }
