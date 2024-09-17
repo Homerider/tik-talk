@@ -1,7 +1,10 @@
-import {Component, signal} from '@angular/core';
+import {Component, inject, input, signal} from '@angular/core';
 import {SvgIconComponent} from "../../../common-ui/svg-icon/svg-icon.component";
 import {DndDirective} from "../../../common-ui/directives/dnd.directive";
 import {FormsModule} from "@angular/forms";
+import {ImgUrlPipe} from "../../../helpers/pipes/img-url.pipe";
+import {Profile} from "../../../data/interfaces/profile.interface";
+import {ProfileService} from "../../../data/services/profile.service";
 
 @Component({
   selector: 'app-avatar-upload',
@@ -9,12 +12,17 @@ import {FormsModule} from "@angular/forms";
   imports: [
     SvgIconComponent,
     DndDirective,
-    FormsModule
+    FormsModule,
+    ImgUrlPipe
   ],
   templateUrl: './avatar-upload.component.html',
   styleUrl: './avatar-upload.component.scss'
 })
 export class AvatarUploadComponent {
+  profileService = inject(ProfileService)
+  me = this.profileService.me
+  profile = input<Profile>()
+
   preview = signal<string>('/assets/imgs/avatar-placeholder.png')
 
   avatar: File | null = null
