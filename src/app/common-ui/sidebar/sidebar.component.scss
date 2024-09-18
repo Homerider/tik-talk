@@ -5,6 +5,24 @@
   background: var(--dark-color);
 }
 
+.pulse {
+  animation: pulse 0.5s ease-in-out;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.4);
+  }
+}
+
+.logo{
+  cursor: pointer;
+  max-height: 74px;
+}
+
 .main-menu-list {
   display: grid;
   grid-gap: 8px;

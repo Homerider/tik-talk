@@ -6,6 +6,7 @@ import {ProfileService} from '../../data/services/profile.service';
 import {ImgUrlPipe} from '../../helpers/pipes/img-url.pipe';
 import {SvgIconComponent} from '../svg-icon/svg-icon.component';
 import {SubscriberCardComponent} from './subscriber-card/subscriber-card.component';
+import {ClickDirective} from "../directives/click.directive";
 
 @Component({
   selector: 'app-sidebar',
@@ -18,7 +19,8 @@ import {SubscriberCardComponent} from './subscriber-card/subscriber-card.compone
     JsonPipe,
     RouterLink,
     ImgUrlPipe,
-    RouterLinkActive
+    RouterLinkActive,
+    ClickDirective,
   ],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss'
