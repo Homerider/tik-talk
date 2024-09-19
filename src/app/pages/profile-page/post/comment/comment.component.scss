@@ -1,0 +1,17 @@
+:host {
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  grid-gap: 16px;
+}
+
+.comment-body {
+  display: grid;
+  grid-gap: 8px;
+}
+
+.comment-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--light-color);
+}
