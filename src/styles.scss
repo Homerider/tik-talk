@@ -185,3 +185,9 @@ body {
   height: 84px;
   resize: none;
 }
+
+.word-wrap {
+  overflow-wrap: break-word !important;
+  white-space: normal !important;
+  min-width: 0;
+}
