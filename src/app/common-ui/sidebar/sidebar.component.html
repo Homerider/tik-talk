@@ -49,7 +49,8 @@
 <footer class="sidebar__footer">
     <ng-container *ngIf="me as currentUser">
         <ng-container *ngIf="currentUser.avatarUrl; else avatarPlaceholder">
-            <img [src]="currentUser.avatarUrl | imgUrl" alt=""
+            <img class="footer-img"
+                    [src]="currentUser.avatarUrl | imgUrl" alt=""
                  (click)="toggleLogoutButton()" />
         </ng-container>
         <ng-template #avatarPlaceholder>
@@ -62,16 +63,19 @@
         <a [routerLink]="['settings']">
             <svg class="settings-btn" icon="settings"></svg>
         </a>
-
-
-        <ng-container *ngIf="showLogoutButton">
-                <a class="btn-content-out"
-                   [routerLink]="['/login']"
-                   (click)="toggleLogoutButton()">
-                    <svg icon="out" class="content-icon"></svg>
-                    Выход
-                </a>
-        </ng-container>
-
     </ng-container>
+
+    <footer class="btn-content-wrapper">
+        <ng-container *ngIf="showLogoutButton">
+            <a class="btn-content-out"
+               [routerLink]="['/login']"
+               (click)="toggleLogoutButton()">
+                <svg icon="out" class="content-icon"></svg>
+                <div class="medium-text mb20 out-text">Выход</div>
+            </a>
+        </ng-container>
+    </footer>
 </footer>
+
+
+
