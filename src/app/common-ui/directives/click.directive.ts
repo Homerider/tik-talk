@@ -32,4 +32,12 @@ export class ClickDirective {
       this.renderer.removeClass(this.el.nativeElement, 'pulse');
     }, 500)
   }
+
+  @HostListener('document:click', ['$event.target'])
+  onDocumentClick(targetElement: EventTarget) {
+    const clickedInside = (targetElement as HTMLElement).closest('.sidebar__footer');
+    if (!clickedInside) {
+      this.renderer.setAttribute(this.el.nativeElement, 'src', this.originalSrc)
+    }
+  }
 }

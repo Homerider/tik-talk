@@ -12,14 +12,15 @@
         class="menu-item"
         [routerLink]="[menuItem.link]"
         routerLinkActive="active"
-        (click)="toggleSearch(menuItem.label)" [class.active]="menuItem.label === activeButton"
+        (click)="toggleSearch(menuItem.label, $event.target)"
+        [class.active]="menuItem.label === activeButton"
       >
         <svg [icon]="menuItem.icon"></svg>
         <span>{{ menuItem.label }}</span>
       </a>
         <ng-container *ngIf="menuItem.label === 'Сообщества' && showSearch">
             <div class="search-container">
-            <input placeholder="Поиск сообществ..." class="search-communities"/>
+            <input type="text" placeholder="Поиск сообществ..." class="search-communities"/>
                 <a [routerLink]="['communities']">
                     <svg class="search-communities-svg" icon="search"></svg>
                 </a>
@@ -31,7 +32,7 @@
 
 <p class="medium-text mb20">Подписчики</p>
 
-@for (subscriber of subcribers$ | async; track subscriber.id) {
+@for (subscriber of subscribers$ | async; track subscriber.id) {
   <app-subscriber-card
     [profile]="subscriber"
   ></app-subscriber-card>
@@ -46,17 +47,31 @@
 
 
 <footer class="sidebar__footer">
-  @if (me(); as me) {
-    @if (me.avatarUrl) {
-      <img [src]="me.avatarUrl | imgUrl" alt="">
-    } @else {
-      <img src="/assets/imgs/avatar-placeholder.png" alt="">
-    }
+    <ng-container *ngIf="me as currentUser">
+        <ng-container *ngIf="currentUser.avatarUrl; else avatarPlaceholder">
+            <img [src]="currentUser.avatarUrl | imgUrl" alt=""
+                 (click)="toggleLogoutButton()" />
+        </ng-container>
+        <ng-template #avatarPlaceholder>
+            <img src="/assets/imgs/avatar-placeholder.png" alt=""
+                 (click)="toggleLogoutButton()" />
+        </ng-template>
 
-    <div class="medium-text username-text">{{ me.username }}</div>
+        <div class="medium-text username-text">{{ currentUser.username }}</div>
 
-    <a [routerLink]="['settings']">
-      <svg class="settings-btn" icon="settings"></svg>
-    </a>
-  }
+        <a [routerLink]="['settings']">
+            <svg class="settings-btn" icon="settings"></svg>
+        </a>
+
+
+        <ng-container *ngIf="showLogoutButton">
+                <a class="btn-content-out"
+                   [routerLink]="['/login']"
+                   (click)="toggleLogoutButton()">
+                    <svg icon="out" class="content-icon"></svg>
+                    Выход
+                </a>
+        </ng-container>
+
+    </ng-container>
 </footer>

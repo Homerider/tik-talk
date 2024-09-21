@@ -1,5 +1,5 @@
 import {AsyncPipe, JsonPipe, NgForOf, NgIf} from '@angular/common';
-import {Component, inject} from '@angular/core';
+import {Component, HostListener, inject} from '@angular/core';
 import {RouterLink, RouterLinkActive} from '@angular/router';
 import {firstValueFrom} from 'rxjs';
 import {ProfileService} from '../../data/services/profile.service';
@@ -7,6 +7,7 @@ import {ImgUrlPipe} from '../../helpers/pipes/img-url.pipe';
 import {SvgIconComponent} from '../svg-icon/svg-icon.component';
 import {SubscriberCardComponent} from './subscriber-card/subscriber-card.component';
 import {ClickDirective} from "../directives/click.directive";
+import {Profile} from "../../data/interfaces/profile.interface";
 
 @Component({
   selector: 'app-sidebar',
@@ -28,11 +29,12 @@ import {ClickDirective} from "../directives/click.directive";
 })
 export class SidebarComponent {
   profileService = inject(ProfileService)
-  subcribers$ = this.profileService.getSubscribersShortList()
+  subscribers$ = this.profileService.getSubscribersShortList()
   showSearch: boolean = false;
   activeButton: string | null = null;
+  showLogoutButton: boolean = false
+  me: Profile | null = null;
 
-  me = this.profileService.me
 
   menuItems = [
     {
@@ -57,7 +59,12 @@ export class SidebarComponent {
     }
   ]
 
-  toggleSearch(menuItems: string) {
+  toggleSearch(menuItems: string, target: EventTarget | null) {
+    if (!target) {
+      this.showSearch = false;
+      return;
+    }
+
     if (menuItems === 'Сообщества') {
       this.showSearch = !this.showSearch;
       this.activeButton = this.showSearch ? menuItems : null;
@@ -67,7 +74,33 @@ export class SidebarComponent {
     }
   }
 
-  ngOnInit() {
-    firstValueFrom(this.profileService.getMe())
+  toggleLogoutButton() {
+    this.showLogoutButton = !this.showLogoutButton;
   }
+
+  ngOnInit() {
+    firstValueFrom(this.profileService.getMe()).then(profile => {
+      this.me = profile;
+    })
+  }
+
+  @HostListener('document:click', ['$event'])
+  onClick(event: MouseEvent) {
+    const targetElement = event.target as HTMLElement;
+
+    const clickedInsideSearchInput = (targetElement as HTMLElement).closest('.search-container');
+    const clickedInsideSearch = (targetElement as HTMLElement).closest('.menu-item');
+    const clickedInsideLogout = (targetElement as HTMLElement).closest('.sidebar__footer');
+
+    if (!clickedInsideSearch && !clickedInsideSearchInput && this.showSearch) {
+      this.showSearch = false;
+      this.activeButton = null;
+    }
+
+    if (!clickedInsideLogout) {
+      this.showLogoutButton = false;
+    }
+  }
+
+
 }

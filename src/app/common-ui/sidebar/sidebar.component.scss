@@ -147,3 +147,22 @@
   }
 }
 
+
+
+.btn-content-out {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--primary-color);
+  border-radius: 4px;
+
+  &:hover {
+    .content-icon {
+      color: var(--light-color)
+    }
+    border: 1px solid var(--light-color);
+  }
+}
+
