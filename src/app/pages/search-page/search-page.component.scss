@@ -5,5 +5,11 @@
 
 .profile-card__wrapper {
   display: grid;
-  grid-gap: 8px;
+  grid-gap: 16px;
+  overflow-y: auto;
+  height: 100%;
+}
+
+.profile-card__wrapper::-webkit-scrollbar {
+  display: none;
 }
