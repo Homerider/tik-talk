@@ -1,4 +1,4 @@
-import {AsyncPipe, JsonPipe, NgForOf} from '@angular/common';
+import {AsyncPipe, JsonPipe, NgForOf, NgIf} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {RouterLink, RouterLinkActive} from '@angular/router';
 import {firstValueFrom} from 'rxjs';
@@ -21,6 +21,7 @@ import {ClickDirective} from "../directives/click.directive";
     ImgUrlPipe,
     RouterLinkActive,
     ClickDirective,
+    NgIf,
   ],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss'
@@ -28,6 +29,8 @@ import {ClickDirective} from "../directives/click.directive";
 export class SidebarComponent {
   profileService = inject(ProfileService)
   subcribers$ = this.profileService.getSubscribersShortList()
+  showSearch: boolean = false;
+  activeButton: string | null = null;
 
   me = this.profileService.me
 
@@ -54,9 +57,17 @@ export class SidebarComponent {
     }
   ]
 
+  toggleSearch(menuItems: string) {
+    if (menuItems === 'Сообщества') {
+      this.showSearch = !this.showSearch;
+      this.activeButton = this.showSearch ? menuItems : null;
+    } else {
+      this.activeButton = null;
+      this.showSearch = false;
+    }
+  }
+
   ngOnInit() {
     firstValueFrom(this.profileService.getMe())
   }
-
-
 }

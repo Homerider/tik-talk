@@ -12,10 +12,19 @@
         class="menu-item"
         [routerLink]="[menuItem.link]"
         routerLinkActive="active"
+        (click)="toggleSearch(menuItem.label)" [class.active]="menuItem.label === activeButton"
       >
         <svg [icon]="menuItem.icon"></svg>
         <span>{{ menuItem.label }}</span>
       </a>
+        <ng-container *ngIf="menuItem.label === 'Сообщества' && showSearch">
+            <div class="search-container">
+            <input placeholder="Поиск сообществ..." class="search-communities"/>
+                <a [routerLink]="['communities']">
+                    <svg class="search-communities-svg" icon="search"></svg>
+                </a>
+            </div>
+        </ng-container>
     </li>
   </ul>
 </nav>
