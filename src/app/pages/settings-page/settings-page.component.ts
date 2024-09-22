@@ -1,11 +1,16 @@
-import {Component, effect, inject, ViewChild} from '@angular/core';
+import {Component, effect, inject, Input, input, signal, ViewChild} from '@angular/core';
 import {ProfileHeaderComponent} from "../../common-ui/profile-header/profile-header.component";
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {ProfileService} from "../../data/services/profile.service";
-import {firstValueFrom} from "rxjs";
-import {AvatarUploadComponent} from "./avatar-upload/avatar-upload.component";
+import {firstValueFrom, switchMap} from "rxjs";
 import {SvgIconComponent} from "../../common-ui/svg-icon/svg-icon.component";
-import {RouterLink} from "@angular/router";
+import {ActivatedRoute, Router, RouterLink} from "@angular/router";
+import {AsyncPipe, NgIf} from "@angular/common";
+import {ImgUrlPipe} from "../../helpers/pipes/img-url.pipe";
+import {toObservable} from "@angular/core/rxjs-interop";
+import {AvatarUploadComponent} from "./avatar-upload/avatar-upload.component";
+import { ChangeDetectorRef } from '@angular/core';
+
 
 @Component({
   selector: 'app-settings-page',
@@ -15,69 +20,83 @@ import {RouterLink} from "@angular/router";
     ReactiveFormsModule,
     AvatarUploadComponent,
     SvgIconComponent,
-    RouterLink
+    RouterLink,
+    AsyncPipe,
+    ImgUrlPipe,
+    NgIf,
   ],
   templateUrl: './settings-page.component.html',
   styleUrl: './settings-page.component.scss'
 })
 export class SettingsPageComponent {
-  fb = inject(FormBuilder);
+  private fb = inject(FormBuilder);
   profileService = inject(ProfileService);
+  route = inject(ActivatedRoute);
+  avatar: File | null = null;
 
-  @ViewChild(AvatarUploadComponent) avatarUpload!: AvatarUploadComponent;
+  profile$ = toObservable(this.profileService.me);
 
-  form = this.fb.group({
-    firstName: ['', Validators.required],
-    lastName: ['', Validators.required],
-    username: [{value: '', disabled: true}, Validators.required],
-    description: [''],
-    stack: ['']
-});
+  form: FormGroup;
 
-  constructor() {
-    effect(() =>{
-      //@ts-ignore
+  constructor(private cdr: ChangeDetectorRef) {
+    this.form = this.fb.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      username: [{ value: '', disabled: true }, Validators.required],
+      description: [''],
+      stack: ['']
+    });
+
+    effect(() => {
+      const currentProfile = this.profileService.me();
       this.form.patchValue({
-        ...this.profileService.me(),
-        //@ts-ignore
-        stack: this.mergeStack(this.profileService.me()?.stack)
-      })
-    })
+        ...currentProfile,
+        stack: this.mergeStack(currentProfile?.stack)
+      });
+    });
   }
 
-  ngAfterViewInit() {
-
+  onDelete() {
+    this.form.reset();
+    this.avatar = null;
+    this.avatarUploader?.reset();
+    this.cdr.detectChanges();
   }
 
-  onSave() {
-    this.form.markAllAsTouched()
-    this.form.updateValueAndValidity()
+  @ViewChild(AvatarUploadComponent) avatarUploader!: AvatarUploadComponent;
 
-    if (this.form.invalid) return
+  ngAfterViewInit() {}
 
-   if (this.avatarUpload.avatar) {
-     firstValueFrom(this.profileService.uploadAvatar(this.avatarUpload.avatar))
-   }
+  async onSave() {
+    this.form.markAllAsTouched();
+    this.form.updateValueAndValidity();
 
-    //@ts-ignore
-    firstValueFrom(this.profileService.patchProfile({
-      ...this.form.value,
-      stack: this.splitStack(this.form.value.stack)
-    }))
+    if (this.form.invalid) return;
+
+    try {
+      if (this.avatarUploader.avatar) {
+        await firstValueFrom(this.profileService.uploadAvatar(this.avatarUploader.avatar));
+      }
+
+      await firstValueFrom(this.profileService.patchProfile({
+        ...this.form.value,
+        stack: this.splitStack(this.form.value.stack)
+      }));
+
+    } catch (error) {
+      console.error('Ошибка при сохранении профиля:', error);
+    }
   }
 
   splitStack(stack: string | null | string[] | undefined): string[] {
     if (!stack) return [];
-    if (Array.isArray(stack)) return stack
-
-    return stack.split(',')
+    if (Array.isArray(stack)) return stack;
+    return stack.split(',');
   }
 
-  mergeStack(stack: string | null | string[] | undefined) {
+  mergeStack(stack: string | null | string[] | undefined): string {
     if (!stack) return '';
-    if (Array.isArray(stack)) return stack.join(',')
-
-    return stack
+    if (Array.isArray(stack)) return stack.join(',');
+    return stack;
   }
-
 }
