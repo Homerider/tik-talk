@@ -1,0 +1,173 @@
+<div class="community-card">
+    <div class="community-name">
+        <img src="/assets/imgs/IT Лицеисты.JPG" class="community-card__avatar">
+
+        <div class="community-card__name">
+            <strong class="h6 mb10 label-name">IT Лицеисты</strong>
+            <span class="subtitle">Образование</span>
+            <span class="subtitle">54 261 подписчиков</span>
+        </div>
+    </div>
+
+    <div class="community-subscribers">
+        <h3 class="h7 mb10">Подписались:</h3>
+        <div class="subscribers-wrapper">
+            <svg icon="subscribed" class="svg-subscribed-icon"></svg>
+            @for (subscriber of itliceist$ | async; track subscriber.id){
+                <a class="subscriber-avatar-btn" [routerLink]="['/profile', subscriber.id]">
+                    <img class="subscriber-avatar-btn" [src]="subscriber.avatarUrl | imgUrl"/>
+                </a>
+            }
+
+        </div>
+    </div>
+
+    <div class="community-card__action-btn">
+        <button class="btn community-btn">
+            Подписаться
+        <svg icon="subscribe" class="svg-subscribe-icon"></svg>
+        </button>
+    </div>
+</div>
+
+
+
+<div class="community-card">
+    <div class="community-name">
+        <img src="/assets/imgs/BoostyIVAN.jpg" class="community-card__avatar">
+
+        <div class="community-card__name">
+            <strong class="h6 mb10 label-name">Boosty Иван</strong>
+            <span class="subtitle">Фан-сообщество</span>
+            <span class="subtitle">112 213 подписчиков</span>
+        </div>
+    </div>
+
+    <div class="community-subscribers">
+        <h3 class="h7 mb10">Подписались:</h3>
+        <div class="subscribers-wrapper">
+            <svg icon="subscribed" class="svg-subscribed-icon"></svg>
+            @for (subscriber of boostyIvan$ | async; track subscriber.id){
+                <a class="subscriber-avatar-btn" [routerLink]="['/profile', subscriber.id]">
+                    <img class="subscriber-avatar-btn" [src]="subscriber.avatarUrl | imgUrl"/>
+                </a>
+            }
+
+        </div>
+    </div>
+
+    <div class="community-card__action-btn">
+        <button class="btn community-btn">
+            Подписаться
+            <svg icon="subscribe" class="svg-subscribe-icon"></svg>
+        </button>
+    </div>
+</div>
+
+
+
+<div class="community-card">
+    <div class="community-name">
+        <img src="/assets/imgs/Формула-1.PNG" class="community-card__avatar">
+
+        <div class="community-card__name">
+            <strong class="h6 mb10 label-name">Формула-1</strong>
+            <span class="subtitle">Автоспорт</span>
+            <span class="subtitle">232 181 подписчиков</span>
+        </div>
+    </div>
+
+    <div class="community-subscribers">
+        <h3 class="h7 mb10">Подписались:</h3>
+        <div class="subscribers-wrapper">
+            <svg icon="subscribed" class="svg-subscribed-icon"></svg>
+            @for (subscriber of formula1$ | async; track subscriber.id){
+                <a class="subscriber-avatar-btn" [routerLink]="['/profile', subscriber.id]">
+                    <img class="subscriber-avatar-btn" [src]="subscriber.avatarUrl | imgUrl"/>
+                </a>
+            }
+
+        </div>
+    </div>
+
+    <div class="community-card__action-btn">
+        <button class="btn community-btn">
+            Подписаться
+            <svg icon="subscribe" class="svg-subscribe-icon"></svg>
+        </button>
+    </div>
+</div>
+
+
+
+<div class="community-card">
+    <div class="community-name">
+        <img src="/assets/imgs/Angular.PNG" class="community-card__avatar">
+
+        <div class="community-card__name">
+            <strong class="h6 mb10 label-name">Angular</strong>
+            <span class="subtitle">Программирование</span>
+            <span class="subtitle">1 420 подписчиков</span>
+        </div>
+    </div>
+
+    <div class="community-subscribers">
+        <h3 class="h7 mb10">Подписались:</h3>
+        <div class="subscribers-wrapper">
+            <svg icon="subscribed" class="svg-subscribed-icon"></svg>
+            @for (subscriber of Angular$ | async; track subscriber.id){
+                <a class="subscriber-avatar-btn" [routerLink]="['/profile', subscriber.id]">
+                    <img class="subscriber-avatar-btn" [src]="subscriber.avatarUrl | imgUrl"/>
+                </a>
+            }
+
+        </div>
+    </div>
+
+    <div class="community-card__action-btn">
+        <button class="btn community-btn">
+            Подписаться
+            <svg icon="subscribe" class="svg-subscribe-icon"></svg>
+        </button>
+    </div>
+</div>
+
+
+
+<div class="community-card">
+    <div class="community-name">
+        <img src="/assets/imgs/SportAPL.PNG" class="community-card__avatar">
+
+        <div class="community-card__name">
+            <strong class="h6 mb10 label-name">SportAPL</strong>
+            <span class="subtitle">Футбол</span>
+            <span class="subtitle">79 675 подписчиков</span>
+        </div>
+    </div>
+
+    <div class="community-subscribers">
+        <h3 class="h7 mb10">Подписались:</h3>
+        <div class="subscribers-wrapper">
+            <svg icon="subscribed" class="svg-subscribed-icon"></svg>
+            @for (subscriber of SportAPL$ | async; track subscriber.id){
+                <a class="subscriber-avatar-btn" [routerLink]="['/profile', subscriber.id]">
+                    <img class="subscriber-avatar-btn" [src]="subscriber.avatarUrl | imgUrl"/>
+                </a>
+            }
+
+        </div>
+    </div>
+
+    <div class="community-card__action-btn">
+        <button class="btn community-btn">
+            Подписаться
+            <svg icon="subscribe" class="svg-subscribe-icon"></svg>
+        </button>
+    </div>
+</div>
+
+
+
+
+
+

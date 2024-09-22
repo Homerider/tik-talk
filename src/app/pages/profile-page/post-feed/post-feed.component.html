@@ -1,0 +1,9 @@
+<app-post-input></app-post-input>
+
+<div class="feed-content">
+    @for (post of feed(); track post.id) {
+        <app-post
+                [post]="post"
+        ></app-post>
+    }
+</div>

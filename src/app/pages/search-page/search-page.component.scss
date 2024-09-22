@@ -1,0 +1,15 @@
+:host {
+  display: grid;
+  grid-gap: 20px;
+}
+
+.profile-card__wrapper {
+  display: grid;
+  grid-gap: 16px;
+  overflow-y: auto;
+  height: 100%;
+}
+
+.profile-card__wrapper::-webkit-scrollbar {
+  display: none;
+}

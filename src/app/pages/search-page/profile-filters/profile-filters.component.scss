@@ -1,0 +1,48 @@
+.profile-search-form {
+  padding: 16px 40px;
+  background: var(--dark-color);
+  border: 1px solid var(--light-color);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr) 50px;
+  grid-gap: 60px;
+  position: relative;
+}
+
+.search-icon {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  right: 5px;
+  z-index: 2;
+}
+
+.profile-wrapper {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-items: center;
+}
+
+.tt-form-input {
+  display: flex;
+  width: 100%;
+}
+
+.label-filter{
+  display: grid;
+  width: 46px;
+  height: 46px;
+  background: var(--primary-color);
+  border-radius: 4px;
+  align-items: center;
+  justify-items: center;
+  position: absolute;
+  top: 25px;
+  right: 40px;
+}
+
+.label-filter-icon{
+  width: 18px;
+  height: 18px;
+  color: var(--light-color);
+}
