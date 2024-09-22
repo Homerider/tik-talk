@@ -1,10 +1,9 @@
-<div class="profile-page__header">
 @if (profile$ | async; as profile) {
         <app-profile-header
                 [profile]="profile"
         ></app-profile-header>
 }
-</div>
+
 
 <form class="profile-form__wrapper" [formGroup]="form">
     <div class="profile-form">

@@ -1,13 +1,7 @@
 :host {
   display: grid;
   grid-gap: 48px;
-  grid-template-columns: 522px 1fr;
-  padding: 24px;
-}
-
-.profile-page__header {
-  display: flex;
-  justify-content: space-between;
+  grid-template-columns: 400px 1fr;
   padding: 24px;
 }
 
@@ -84,9 +78,10 @@
   border-radius: 4px;
   cursor: pointer;
 
-  &:hover {
+  &:hover,
+  &:focus {
     .content-icon-delete {
-      border: tomato;
+      color: tomato;
     }
     border: 1px solid tomato;
   }
