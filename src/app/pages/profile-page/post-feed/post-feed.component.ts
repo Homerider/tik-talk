@@ -2,7 +2,7 @@ import {Component, ElementRef, HostListener, inject, Renderer2} from '@angular/c
 import {PostInputComponent} from "../post-input/post-input.component";
 import {PostComponent} from "../post/post.component";
 import {PostService} from "../../../data/services/post.service";
-import {firstValueFrom, fromEvent} from "rxjs";
+import {debounceTime, firstValueFrom, fromEvent, Subject, takeUntil} from "rxjs";
 
 @Component({
   selector: 'app-post-feed',
@@ -18,6 +18,7 @@ export class PostFeedComponent {
   postService = inject(PostService)
   hostElement = inject(ElementRef);
   r2 = inject(Renderer2);
+  private destroy$ = new Subject<void>();
 
   feed = this.postService.posts;
 
@@ -35,15 +36,24 @@ export class PostFeedComponent {
     this.resizeFeed()
 
     fromEvent(window, 'resize')
+        .pipe(
+            debounceTime(500),
+            takeUntil(this.destroy$)
+        )
         .subscribe(() => {
           console.log(12313)
         })
   }
 
+  ngOnDestroy() {
+    this.destroy$.next()
+    this.destroy$.complete()
+  }
+
   resizeFeed() {
     const {top} = this.hostElement.nativeElement.getBoundingClientRect();
 
-    const height = window.innerHeight - top - 24 - 24
+    const height = window.innerHeight - top - 48
 
     this.r2.setStyle(this.hostElement.nativeElement, 'height', `${height}px`)
   }
