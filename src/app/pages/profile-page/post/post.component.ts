@@ -8,6 +8,7 @@ import {CommentComponent} from "./comment/comment.component";
 import {PostService} from "../../../data/services/post.service";
 import {firstValueFrom} from "rxjs";
 import {TimePipe} from "../../../helpers/pipes/time.pipe";
+import {ProfileService} from "../../../data/services/profile.service";
 
 
 
@@ -27,7 +28,7 @@ import {TimePipe} from "../../../helpers/pipes/time.pipe";
 })
 export class PostComponent implements OnInit {
   post = input<Post>()
-
+  profile = inject(ProfileService).me;
   comments = signal<PostComment[]>([])
 
   postService = inject(PostService)
@@ -36,8 +37,18 @@ export class PostComponent implements OnInit {
     this.comments.set(this.post()!.comments)
   }
 
-  async onCreated() {
-    const comments = await firstValueFrom(this.postService.getCommentsByPostId(this.post()!.id))
-    this.comments.set(comments)
-  }
+  async onCreated(commentText: string) {
+
+      firstValueFrom(this.postService.createComment({
+        text: commentText,
+        authorId: this.profile()!.id,
+        postId: this.post()!.id
+      }))
+          .then(async() => {
+            const comments = await firstValueFrom(this.postService.getCommentsByPostId(this.post()!.id))
+            this.comments.set(comments)
+          })
+          .catch((error) => console.error('Error creating comment:', error));
+      return;
+    }
 }

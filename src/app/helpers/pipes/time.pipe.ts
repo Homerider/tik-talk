@@ -13,7 +13,8 @@ export class TimePipe implements PipeTransform {
 
     const date = new Date(value);
     const now = new Date();
-    const diffInSeconds = Math.floor((now.getTime() - date.getTime()) / 1000);
+    const offset = date.getTimezoneOffset() * 60 * 60 * 1000;
+    const diffInSeconds = Math.floor((now.getTime() - date.getTime())/ 1000);
 
     const getTimeAgoString = (num: number, words: [string, string, string]): string => {
       const cases = [2, 0, 1, 1, 1, 2];

@@ -1,4 +1,4 @@
-import {Component, EventEmitter, HostBinding, inject, input, Output, Renderer2} from '@angular/core';
+import {Component, EventEmitter, HostBinding, inject, Input, input, Output, Renderer2} from '@angular/core';
 import {AvatarCircleComponent} from "../../../common-ui/avatar-circle/avatar-circle.component";
 import {NgIf} from "@angular/common";
 import {ProfileService} from "../../../data/services/profile.service";
@@ -20,50 +20,36 @@ import {firstValueFrom} from "rxjs";
   styleUrl: './post-input.component.scss'
 })
 export class PostInputComponent {
-  r2 = inject(Renderer2)
-  PostService = inject(PostService);
+  r2 = inject(Renderer2);
+  profile = inject(ProfileService).me
 
   isCommentInput = input(false)
   postId = input<number>(0)
-  profile = inject(ProfileService).me;
+  postText = '';
 
-  @Output() created = new EventEmitter()
+  @Output() created = new EventEmitter<string>();
 
   @HostBinding('class.comment')
   get isComment() {
-    return this.isCommentInput()
+    return this.isCommentInput;
   }
-
-  postText = ''
 
   onTextAreaInput(event: Event) {
     const textarea = event.target as HTMLTextAreaElement;
-
-    this.r2.setStyle(textarea,'height', 'auto');
-    this.r2.setStyle(textarea,'height', textarea.scrollHeight + 'px');
+    this.r2.setStyle(textarea, 'height', 'auto');
+    this.r2.setStyle(textarea, 'height', `${textarea.scrollHeight}px`);
   }
 
-  onCreatePost() {
-    if (!this.postText) return
-
-    if (this.isCommentInput()) {
-      firstValueFrom(this.PostService.createComment({
-        text: this.postText,
-        authorId: this.profile()!.id,
-        postId: this.postId()
-      })).then(() => {
-        this.postText = '';
-        this.created.emit()
-      })
-      return;
-    }
-
-    firstValueFrom(this.PostService.createPost({
-      title: 'Клёвый пост',
-      content: this.postText,
-      authorId: this.profile()!.id
-    })).then(() => {
+  onSend() {
+    if (this.postText.trim()) {
+      this.created.emit(this.postText);
       this.postText = '';
-    })
+    }
+  }
+
+  onKeyUp() {
+
+      this.onSend();
+
   }
 }

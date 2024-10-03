@@ -8,10 +8,12 @@
         [(ngModel)]="postText"
         class="hidden-textarea"
         (input)="onTextAreaInput($event)"
+        (keyup.enter)="onKeyUp()"
+        placeholder="Эй! Напиши что-нибудь?"
 ></textarea>
 
 <svg icon="smile" class="svg16"></svg>
 
-<button class="btn-icon" (click)="onCreatePost()">
+<button class="btn-icon" (click)="onSend()">
    <svg icon="send-message" class="svg16"></svg>
 </button>
