@@ -38,13 +38,15 @@ export class PostComponent implements OnInit {
   }
 
     formatShortTime(dateString: string, locale: string = 'ru'): string {
-        const date = DateTime.now().setLocale(locale);
+        const date = DateTime.fromISO(dateString).plus({ hours: 3 }).setLocale(locale);
+
         return date.toFormat('HH:mm');
     }
 
-    formatFullDate(dateString: string, locale: string = 'en'): string {
-        const date = DateTime.now().setLocale(locale);
-        return date.toFormat('cccc, dd LLLL yyyy');
+    formatFullDate(dateString: string, locale: string = 'ru'): string {
+        const date = DateTime.fromISO(dateString).setLocale(locale);
+
+        return date.toFormat('cccc, dd MMMM yyyy');
     }
 
 
