@@ -1,4 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import {DateTime} from "luxon";
+import {dateTimestampProvider} from "rxjs/internal/scheduler/dateTimestampProvider";
 
 @Pipe({
   standalone: true,
@@ -6,15 +8,16 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class TimePipe implements PipeTransform {
 
-  transform(value: string | Date | null): string {
+
+  transform(value: string, locale: string = 'ru', timeZone: string = 'Europe/Moscow'): string {
     if (!value) {
       return 'Нет данных';
     }
 
-    const date = new Date(value);
-    const now = new Date();
-    const offset = date.getTimezoneOffset() * 60 * 60 * 1000;
-    const diffInSeconds = Math.floor((now.getTime() - date.getTime())/ 1000);
+    const date = DateTime.fromISO(value).setZone(timeZone).setLocale(locale);
+    const now = DateTime.now().setZone(timeZone).minus({ hours: 3 }).setLocale(locale);
+
+    const diffInSeconds = Math.floor(now.diff(date, 'seconds').seconds);
 
     const getTimeAgoString = (num: number, words: [string, string, string]): string => {
       const cases = [2, 0, 1, 1, 1, 2];
@@ -31,7 +34,7 @@ export class TimePipe implements PipeTransform {
       return getTimeAgoString(diffInHours, ['час', 'часа', 'часов']);
     } else {
       const diffInDays = Math.floor(diffInSeconds / 86400);
-      return getTimeAgoString(diffInDays, ['день', 'дня', 'дней']);
+      return getTimeAgoString(diffInDays, ['день', 'дня', 'ней']);
     }
   }
 }

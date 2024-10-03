@@ -74,7 +74,6 @@ export class PostFeedComponent implements OnInit, AfterViewInit, OnDestroy {
     this.r2.setStyle(this.hostElement.nativeElement, 'height', `${height}px`);
   }
 
-  // Метод для загрузки постов
   private loadPosts() {
     firstValueFrom(this.postService.fetchPosts())
         .then((posts) => {
@@ -83,11 +82,9 @@ export class PostFeedComponent implements OnInit, AfterViewInit, OnDestroy {
         .catch((error) => console.error('Error loading posts:', error));
   }
 
-  // Метод для создания поста или комментария
   onCreatePost(postText: string) {
     if (!postText) return;
 
-    // Создание поста
     firstValueFrom(this.postService.createPost({
       title: 'Клевый пост',
       content: postText,

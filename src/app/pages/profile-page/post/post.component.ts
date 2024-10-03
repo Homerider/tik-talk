@@ -9,7 +9,7 @@ import {PostService} from "../../../data/services/post.service";
 import {firstValueFrom} from "rxjs";
 import {TimePipe} from "../../../helpers/pipes/time.pipe";
 import {ProfileService} from "../../../data/services/profile.service";
-
+import {DateTime} from "luxon";
 
 
 @Component({
@@ -21,7 +21,7 @@ import {ProfileService} from "../../../data/services/profile.service";
     SvgIconComponent,
     PostInputComponent,
     CommentComponent,
-    TimePipe
+    TimePipe,
   ],
   templateUrl: './post.component.html',
   styleUrl: './post.component.scss'
@@ -36,6 +36,17 @@ export class PostComponent implements OnInit {
   async ngOnInit() {
     this.comments.set(this.post()!.comments)
   }
+
+    formatShortTime(dateString: string, locale: string = 'ru'): string {
+        const date = DateTime.now().setLocale(locale);
+        return date.toFormat('HH:mm');
+    }
+
+    formatFullDate(dateString: string, locale: string = 'en'): string {
+        const date = DateTime.now().setLocale(locale);
+        return date.toFormat('cccc, dd LLLL yyyy');
+    }
+
 
   async onCreated(commentText: string) {
 

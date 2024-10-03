@@ -8,8 +8,8 @@
         <div class="post-header">
             <strong class="post__author">
                 {{ post.author.firstName }} {{ post.author.lastName }}
-                {{ post.createdAt | date: 'shortTime' }} - {{ post.createdAt | date: 'fullDate' }}
-                <p class="post-created-at">{{ post.createdAt | TimePipe }}</p>
+                {{ formatShortTime(post.createdAt, 'ru') }} - {{ formatFullDate(post.createdAt, 'ru') }}
+                <p class="post-created-at">{{ post.createdAt | TimePipe: 'ru' }}</p>
             </strong>
         </div>
 
