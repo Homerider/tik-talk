@@ -1,12 +1,12 @@
 :host {
-  display: grid;
-  grid-template-columns: 32px min-content;
-  grid-gap: 12px;
+  display: flex;
+  gap: 12px;
 }
 
 :host.is-mine {
-  grid-template-columns: min-content 32px;
+  display: flex;
   justify-self: end;
+  text-align: right;
 
   .message-container {
     order: -1;
@@ -17,8 +17,9 @@
     background: var(--primary-color);
     color: var(--dark-color);
     font-weight: 500;
-    width: 100%;
+    display: inline-block;
     max-width: 200px;
+    text-align: left;
     white-space: normal;
     overflow-wrap: break-word;
     mask: linear-gradient(#000 0 0), linear-gradient(-135deg, #000 50%, #0000 0) border-box 100% 100% / 200% 200% no-repeat;
@@ -32,7 +33,7 @@
   background: var(--message-color);
   color: var(--light-color);
   font-weight: 500;
-  width: 100%;
+  display: inline-block;
   max-width: 200px;
   white-space: normal;
   overflow-wrap: break-word;
@@ -41,7 +42,7 @@
   mask-position: 98% 78%;
 }
 
-.user {
-  display: flex;
-  width: 170px;
+.time {
+  color: var(--light-transparent-color);
+  font-size: 10px;
 }
