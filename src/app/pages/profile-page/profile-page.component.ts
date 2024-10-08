@@ -8,6 +8,7 @@ import {SvgIconComponent} from "../../common-ui/svg-icon/svg-icon.component";
 import {ImgUrlPipe} from "../../helpers/pipes/img-url.pipe";
 import {ProfileService} from "../../data/services/profile.service";
 import {PostFeedComponent} from "./post-feed/post-feed.component";
+import {ChatsService} from "../../data/services/chats.service";
 
 @Component({
   selector: 'app-profile-page',
@@ -27,6 +28,7 @@ import {PostFeedComponent} from "./post-feed/post-feed.component";
 })
 export class ProfilePageComponent {
   profileService = inject(ProfileService)
+  chatsService = inject(ChatsService)
   route = inject(ActivatedRoute)
   router = inject(Router)
 
@@ -44,5 +46,12 @@ export class ProfilePageComponent {
         return this.profileService.getAccount(id)
       })
     )
+
+  async sendMessage(userId: number) {
+    firstValueFrom(this.chatsService.createChat(userId))
+    .then((res) => {
+      this.router.navigate(['/chats', res.id])
+    })
+  }
 
 }
