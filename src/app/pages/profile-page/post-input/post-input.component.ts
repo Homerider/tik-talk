@@ -48,8 +48,6 @@ export class PostInputComponent {
   }
 
   onKeyUp() {
-
       this.onSend();
-
   }
 }

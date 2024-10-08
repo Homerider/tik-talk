@@ -39,4 +39,15 @@ export class MessageInputComponent {
     this.created.emit(this.postText)
     this.postText = ''
   }
+
+  onSend() {
+    if (this.postText.trim()) {
+      this.created.emit(this.postText);
+      this.postText = '';
+    }
+  }
+
+  onKeyUp() {
+    this.onSend();
+  }
 }

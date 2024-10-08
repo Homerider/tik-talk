@@ -1,6 +1,6 @@
 :host {
   display: grid;
-  grid-template-columns: 32px 1fr;
+  grid-template-columns: 32px min-content;
   grid-gap: 12px;
 }
 
@@ -11,6 +11,20 @@
   .message-container {
     order: -1;
   }
+
+  .message-text {
+    padding: 8px 16px;
+    background: var(--primary-color);
+    color: var(--dark-color);
+    font-weight: 500;
+    width: 100%;
+    max-width: 200px;
+    white-space: normal;
+    overflow-wrap: break-word;
+    mask: linear-gradient(#000 0 0), linear-gradient(-135deg, #000 50%, #0000 0) border-box 100% 100% / 200% 200% no-repeat;
+    mask-composite: exclude;
+    mask-position: 7% 98%;
+  }
 }
 
 .message-text {
@@ -18,8 +32,16 @@
   background: var(--message-color);
   color: var(--light-color);
   font-weight: 500;
-  width: min-content;
+  width: 100%;
+  max-width: 200px;
+  white-space: normal;
+  overflow-wrap: break-word;
   mask: linear-gradient(#000 0 0), linear-gradient(135deg, #000 50%, #0000 0) border-box 100% 100% / 200% 200% no-repeat;
   mask-composite: exclude;
-  mask-position: 95% 75%;
+  mask-position: 98% 78%;
+}
+
+.user {
+  display: flex;
+  width: 170px;
 }
