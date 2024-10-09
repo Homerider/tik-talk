@@ -6,6 +6,7 @@ export interface Chat {
     userSecond: Profile
     messages: Message[]
     companion?: Profile
+    createdAt: string
 }
 
 export interface Message {
@@ -24,4 +25,5 @@ export interface LastMessageRes {
     id: number
     userFrom: Profile
     message: string | null
+    createdAt: string
 }

@@ -5,7 +5,17 @@
     ></app-avatar-circle>
 
     <div class="last-message__wrapper">
-        <div class="chat-user medium-text">{{ chat.userFrom.firstName }} {{ chat.userFrom.lastName }}</div>
-        <div class="medium-text">{{ chat.message ?? '...' }}</div>
+        <div class="chat-user medium-text">
+            {{ chat.userFrom.firstName }} {{ chat.userFrom.lastName }}
+        </div>
+        <div class="time-message">
+            {{ formatShortTime(chat.createdAt, 'ru') }} {{ formatFullDate(chat.createdAt, 'ru') }}
+        </div>
+
+        <div class="last-message medium-text"> {{ chat.message ?? '...' }}</div>
     </div>
+
 }
+
+
+

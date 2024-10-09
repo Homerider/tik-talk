@@ -16,10 +16,16 @@
   background: var(--dark-active-color);
 }
 
+:host.active .chat-user,
+:host.active .last-message,
+:host.active .time-message {
+  color: var(--primary-color);
+}
+
 .last-message__wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 16px;
   text-align: left;
   color: var(--light-color);
 }
@@ -27,3 +33,14 @@
 .chat-user {
   color: var(--light-transparent-color);
 }
+
+.time-message {
+  text-align: right;
+  color: var(--light-transparent-color);
+}
+
+.last-message {
+  color: var(--light-color);
+}
+
+
