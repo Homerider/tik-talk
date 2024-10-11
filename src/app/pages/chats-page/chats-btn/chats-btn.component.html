@@ -5,16 +5,27 @@
     ></app-avatar-circle>
 
     <div class="last-message__wrapper">
-        <div class="chat-user medium-text">
-            {{ chat.userFrom.firstName }} {{ chat.userFrom.lastName }}
-        </div>
-        <div class="time-message">
-            {{ formatShortTime(chat.createdAt, 'ru') }} {{ formatFullDate(chat.createdAt, 'ru') }}
+        <div class="left-column">
+            <div class="chat-user medium-text">
+                {{ chat.userFrom.firstName }} {{ chat.userFrom.lastName }}
+            </div>
+            <div class="last-message medium-text">
+                {{ chat.message ?? '...' }}
+            </div>
         </div>
 
-        <div class="last-message medium-text"> {{ chat.message ?? '...' }}</div>
+        <div class="right-column">
+            <div class="time-message">
+                {{ formatShortTime(chat.createdAt, 'ru') }} {{ formatFullDate(chat.createdAt, 'ru') }}
+            </div>
+            <div class="message-counters">
+                <div class="message-amount">
+                    <svg icon="comment" class="svg16"></svg>
+<!--                    <span class="message-length">{{ messages().length }}</span>-->
+                </div>
+            </div>
+        </div>
     </div>
-
 }
 
 

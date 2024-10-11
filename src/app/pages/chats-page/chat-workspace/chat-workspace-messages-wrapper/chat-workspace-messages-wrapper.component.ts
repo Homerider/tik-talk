@@ -7,7 +7,7 @@ import {
   input,
   Output,
   Renderer2,
-  signal
+  signal, ViewChild
 } from '@angular/core';
 import {ChatWorkspaceMessageComponent} from "./chat-workspace-message/chat-workspace-message.component";
 import {MessageInputComponent} from "../../../../common-ui/message-input/message-input.component";
@@ -35,7 +35,6 @@ export class ChatWorkspaceMessagesWrapperComponent {
   messages = this.chatsService.activeChatMessages;
   r2 = inject(Renderer2);
 
-
   constructor() {
     // Запуск таймера для периодической подгрузки новых сообщений
     this.startMessagePolling();
@@ -43,7 +42,7 @@ export class ChatWorkspaceMessagesWrapperComponent {
 
   // Новый метод для периодического запроса сообщений
   private startMessagePolling() {
-    timer(0, 10000) // Запуск сразу (0) и затем каждые 10 секунд (10000 мс)
+    timer(0, 3600000) // Запуск сразу (0) и затем каждый час
         .pipe(takeUntil(this.destroy$)) // Завершение подписки при уничтожении компонента
         .subscribe(async () => {
           await firstValueFrom(this.chatsService.getChatById(this.chat().id));
