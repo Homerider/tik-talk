@@ -26,5 +26,4 @@ export interface LastMessageRes {
     userFrom: Profile
     message: string | null
     createdAt: string
-    messages: Message[]
 }

@@ -1,4 +1,4 @@
-import {Component, inject, input, signal} from '@angular/core';
+import {Component, inject, Input, input, signal} from '@angular/core';
 import {AvatarCircleComponent} from "../../../common-ui/avatar-circle/avatar-circle.component";
 import {Chat, LastMessageRes, Message} from "../../../data/interfaces/chats.interface";
 import {DateTime} from "luxon";
@@ -19,16 +19,6 @@ import {NgIf} from "@angular/common";
 })
 export class ChatsBtnComponent {
   chat = input<LastMessageRes>()
-  message = input.required<Message>()
-  messages = signal<Message[]>([])
-
-
-  async ngOnInit() {
-    const chatData = this.chat();
-    if (chatData) {
-      this.messages.set(chatData.messages);
-    }
-  }
 
 
   formatShortTime(dateString: string, locale: string = 'ru'): string {

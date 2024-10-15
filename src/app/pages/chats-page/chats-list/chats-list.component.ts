@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {Component, inject, Input, input} from '@angular/core';
 import {ChatsBtnComponent} from "../chats-btn/chats-btn.component";
 import {FormControl, ReactiveFormsModule} from "@angular/forms";
 import {SvgIconComponent} from "../../../common-ui/svg-icon/svg-icon.component";
@@ -6,6 +6,7 @@ import {ChatsService} from "../../../data/services/chats.service";
 import {AsyncPipe} from "@angular/common";
 import {RouterLink, RouterLinkActive} from "@angular/router";
 import {map, startWith, switchMap} from "rxjs";
+import {Message} from "../../../data/interfaces/chats.interface";
 
 @Component({
   selector: 'app-chats-list',
@@ -23,8 +24,8 @@ import {map, startWith, switchMap} from "rxjs";
 })
 export class ChatsListComponent {
   chatsService = inject(ChatsService);
-
   filterChatsControl = new FormControl('')
+
 
   chats$ = this.chatsService.getMyChats()
       .pipe(
