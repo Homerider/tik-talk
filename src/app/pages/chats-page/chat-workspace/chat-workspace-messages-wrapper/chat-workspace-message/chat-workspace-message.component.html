@@ -5,8 +5,11 @@
     ></app-avatar-circle>
 
     <div class="message-container">
-        <p class="medium-text mb4">{{ formatShortTime(message.createdAt, 'ru') }} {{ message.user?.firstName }} {{ message.user?.lastName }}</p>
-        <p class="time medium-text mb8">{{ message.createdAt | TimePipe: 'ru' }}</p>
+        <div class="user-name-time">
+        <span class="time medium-text mb4"> {{ formatShortTime(message.createdAt, 'ru') }} </span>
+        <span class="name medium-text mb4"> {{ message.user?.firstName }} {{ message.user?.lastName }} </span>
+        </div>
+        <p class="time-pipe medium-text mb8">{{ message.createdAt | TimePipe: 'ru' }}</p>
         <div #messageContainer class="message-text medium-text">
             {{ message.text }}
         </div>

@@ -12,6 +12,19 @@
     order: -1;
   }
 
+  .user-name-time {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+  }
+  .time {
+    order: 2;
+  }
+
+  .name {
+    order: 1;
+  }
+
   .message-text {
     padding: 8px 16px;
     background: var(--primary-color);
@@ -42,7 +55,8 @@
   mask-position: 98% 78%;
 }
 
-.time {
+.time-pipe {
   color: var(--light-transparent-color);
   font-size: 10px;
 }
+
