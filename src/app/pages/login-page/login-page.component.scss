@@ -1,50 +1,50 @@
 :host {
-    display: grid;
-    grid-template-columns: 440px 1fr;
-    height: 100dvh;
-    align-items: center;
-    margin: 0 15%;
-    gap: 0 15%;
+	display: grid;
+	grid-template-columns: 440px 1fr;
+	height: 100dvh;
+	align-items: center;
+	margin: 0 15%;
+	gap: 0 15%;
 }
 
 .login-form {
-    width: 440px;
+	width: 440px;
 }
 
 .login-form,
 .big-logo {
-    place-self: center;
+	place-self: center;
 }
 
 .password-input {
-    position: relative;
+	position: relative;
 }
 
 .password-eye-btn {
-    position: absolute;
-    top: 50%;
-    right: 12px;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    color: #ffffffbf;
-    cursor: pointer;
+	position: absolute;
+	top: 50%;
+	right: 12px;
+	transform: translateY(-50%);
+	background: none;
+	border: none;
+	color: #ffffffbf;
+	cursor: pointer;
 }
 
 .password-eye-btn.active {
-    color: var(--primary-color);
+	color: var(--primary-color);
 }
 
 .login-input {
-    position: relative;
+	position: relative;
 }
 
 .login-eye-btn {
-    position: absolute;
-    top: 50%;
-    right: 12px;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    color: #ffffffbf;
+	position: absolute;
+	top: 50%;
+	right: 12px;
+	transform: translateY(-50%);
+	background: none;
+	border: none;
+	color: #ffffffbf;
 }

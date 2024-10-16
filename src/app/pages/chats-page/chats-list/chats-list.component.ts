@@ -9,35 +9,35 @@ import { map, startWith, switchMap } from 'rxjs'
 import { Message } from '../../../data/interfaces/chats.interface'
 
 @Component({
-    selector: 'app-chats-list',
-    standalone: true,
-    imports: [
-        ChatsBtnComponent,
-        ReactiveFormsModule,
-        SvgIconComponent,
-        AsyncPipe,
-        RouterLink,
-        RouterLinkActive,
-    ],
-    templateUrl: './chats-list.component.html',
-    styleUrl: './chats-list.component.scss',
+	selector: 'app-chats-list',
+	standalone: true,
+	imports: [
+		ChatsBtnComponent,
+		ReactiveFormsModule,
+		SvgIconComponent,
+		AsyncPipe,
+		RouterLink,
+		RouterLinkActive
+	],
+	templateUrl: './chats-list.component.html',
+	styleUrl: './chats-list.component.scss'
 })
 export class ChatsListComponent {
-    chatsService = inject(ChatsService)
-    filterChatsControl = new FormControl('')
+	chatsService = inject(ChatsService)
+	filterChatsControl = new FormControl('')
 
-    chats$ = this.chatsService.getMyChats().pipe(
-        switchMap((chats) => {
-            return this.filterChatsControl.valueChanges.pipe(
-                startWith(''),
-                map((inputValue) => {
-                    return chats.filter((chat) => {
-                        return `${chat.userFrom.lastName} ${chat.userFrom.firstName}`
-                            .toLowerCase()
-                            .includes(inputValue?.toLowerCase() ?? '')
-                    })
-                }),
-            )
-        }),
-    )
+	chats$ = this.chatsService.getMyChats().pipe(
+		switchMap((chats) => {
+			return this.filterChatsControl.valueChanges.pipe(
+				startWith(''),
+				map((inputValue) => {
+					return chats.filter((chat) => {
+						return `${chat.userFrom.lastName} ${chat.userFrom.firstName}`
+							.toLowerCase()
+							.includes(inputValue?.toLowerCase() ?? '')
+					})
+				})
+			)
+		})
+	)
 }

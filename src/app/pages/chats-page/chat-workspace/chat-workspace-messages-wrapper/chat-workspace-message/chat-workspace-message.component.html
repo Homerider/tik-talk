@@ -1,22 +1,22 @@
 @if (message; as message) {
-    <app-avatar-circle
-        class="size32"
-        [avatarUrl]="message.user?.avatarUrl"></app-avatar-circle>
+	<app-avatar-circle
+		class="size32"
+		[avatarUrl]="message.user?.avatarUrl"></app-avatar-circle>
 
-    <div class="message-container">
-        <div class="user-name-time">
-            <span class="time medium-text mb4">
-                {{ formatShortTime(message.createdAt, 'ru') }}
-            </span>
-            <span class="name medium-text mb4">
-                {{ message.user?.firstName }} {{ message.user?.lastName }}
-            </span>
-        </div>
-        <p class="time-pipe medium-text mb8">
-            {{ message.createdAt | timePipe: 'ru' }}
-        </p>
-        <div class="message-text medium-text">
-            {{ message.text }}
-        </div>
-    </div>
+	<div class="message-container">
+		<div class="user-name-time">
+			<span class="time medium-text mb4">
+				{{ formatShortTime(message.createdAt, 'ru') }}
+			</span>
+			<span class="name medium-text mb4">
+				{{ message.user?.firstName }} {{ message.user?.lastName }}
+			</span>
+		</div>
+		<p class="time-pipe medium-text mb8">
+			{{ message.createdAt | timePipe: 'ru' }}
+		</p>
+		<div class="message-text medium-text">
+			{{ message.text }}
+		</div>
+	</div>
 }

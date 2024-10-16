@@ -6,20 +6,20 @@ import { DateTime } from 'luxon'
 import { timePipe } from '../../../../helpers/pipes/time.pipe'
 
 @Component({
-    selector: 'app-comment',
-    standalone: true,
-    imports: [AvatarCircleComponent, DatePipe, timePipe],
-    templateUrl: './comment.component.html',
-    styleUrl: './comment.component.scss',
+	selector: 'app-comment',
+	standalone: true,
+	imports: [AvatarCircleComponent, DatePipe, timePipe],
+	templateUrl: './comment.component.html',
+	styleUrl: './comment.component.scss'
 })
 export class CommentComponent {
-    @Input() comment!: PostComment
+	@Input() comment!: PostComment
 
-    formatFullDate(dateString: string, locale: string = 'en'): string {
-        const date = DateTime.fromISO(dateString)
-            .plus({ hours: 3 })
-            .setLocale(locale)
+	formatFullDate(dateString: string, locale: string = 'en'): string {
+		const date = DateTime.fromISO(dateString)
+			.plus({ hours: 3 })
+			.setLocale(locale)
 
-        return date.toFormat('HH:mm dd.MM.yyyy')
-    }
+		return date.toFormat('HH:mm dd.MM.yyyy')
+	}
 }

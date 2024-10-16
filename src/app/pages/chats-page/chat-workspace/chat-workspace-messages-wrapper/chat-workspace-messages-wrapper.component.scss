@@ -1,35 +1,35 @@
 :host {
-    display: grid;
-    padding: 16px 20px;
-    grid-template-rows: 1fr min-content;
+	display: grid;
+	padding: 16px 20px;
+	grid-template-rows: 1fr min-content;
 }
 
 .messages-wrapper {
-    display: grid;
-    grid-gap: 12px;
-    overflow-y: auto;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+	display: grid;
+	grid-gap: 12px;
+	overflow-y: auto;
+	scrollbar-width: none;
+	-ms-overflow-style: none;
 
-    &::-webkit-scrollbar {
-        display: none;
-    }
+	&::-webkit-scrollbar {
+		display: none;
+	}
 }
 
 .date-divider {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 8px auto;
-    padding: 8px 16px;
-    background: var(--dark-active-color);
-    color: var(--light-color);
-    font-weight: 700;
-    font-size: 12px;
-    width: fit-content;
-    height: 29px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 8px auto;
+	padding: 8px 16px;
+	background: var(--dark-active-color);
+	color: var(--light-color);
+	font-weight: 700;
+	font-size: 12px;
+	width: fit-content;
+	height: 29px;
 }
 
 .messages__footer {
-    padding-top: 16px;
+	padding-top: 16px;
 }

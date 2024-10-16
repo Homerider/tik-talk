@@ -1,98 +1,98 @@
 :host {
-    display: grid;
-    grid-gap: 48px;
-    grid-template-columns: 400px 1fr;
-    padding: 24px;
+	display: grid;
+	grid-gap: 48px;
+	grid-template-columns: 400px 1fr;
+	padding: 24px;
 }
 
 .profile-form__wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 32px;
-    border: 1px solid var(--light-color);
-    background: var(--dark-color);
-    height: calc(100dvh - (24px * 4));
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 32px;
+	border: 1px solid var(--light-color);
+	background: var(--dark-color);
+	height: calc(100dvh - (24px * 4));
 }
 
 .profile-form {
-    display: grid;
-    grid-gap: 20px;
+	display: grid;
+	grid-gap: 20px;
 }
 
 .two-columns {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 20px;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 20px;
 }
 
 .settings-btn-footer {
-    display: flex;
-    justify-content: space-between;
+	display: flex;
+	justify-content: space-between;
 }
 
 .btn-wrapper-out-delete {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-column-gap: 20px;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-column-gap: 20px;
 }
 
 .btn-content-out {
-    width: 44px;
-    height: 44px;
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid var(--primary-color);
-    border-radius: 4px;
+	width: 44px;
+	height: 44px;
+	display: grid;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid var(--primary-color);
+	border-radius: 4px;
 
-    &:hover {
-        .content-icon-out {
-            color: var(--light-color);
-        }
-        border: 1px solid var(--light-color);
-    }
+	&:hover {
+		.content-icon-out {
+			color: var(--light-color);
+		}
+		border: 1px solid var(--light-color);
+	}
 }
 
 .content-icon-out {
-    width: 16px;
-    height: 16px;
-    color: var(--primary-color);
+	width: 16px;
+	height: 16px;
+	color: var(--primary-color);
 }
 
 .content-icon-delete {
-    width: 10px;
-    height: 12px;
-    color: var(--primary-color);
+	width: 10px;
+	height: 12px;
+	color: var(--primary-color);
 }
 
 .btn-content-delete {
-    width: 44px;
-    height: 44px;
-    display: grid;
-    background: none;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid var(--primary-color);
-    border-radius: 4px;
-    cursor: pointer;
+	width: 44px;
+	height: 44px;
+	display: grid;
+	background: none;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid var(--primary-color);
+	border-radius: 4px;
+	cursor: pointer;
 
-    &:hover,
-    &:focus {
-        .content-icon-delete {
-            color: tomato;
-        }
-        border: 1px solid tomato;
-    }
+	&:hover,
+	&:focus {
+		.content-icon-delete {
+			color: tomato;
+		}
+		border: 1px solid tomato;
+	}
 }
 
 .btn-content-save {
-    width: 130px;
-    height: 44px;
+	width: 130px;
+	height: 44px;
 }
 
 .save {
-    &:hover {
-        background: var(--light-color);
-    }
+	&:hover {
+		background: var(--light-color);
+	}
 }

@@ -7,9 +7,9 @@ import { authTokenInterceptor } from './auth/auth.interceptor'
 
 export let appConfig: ApplicationConfig
 appConfig = {
-    providers: [
-        provideZoneChangeDetection({ eventCoalescing: true }),
-        provideRouter(routes),
-        provideHttpClient(withInterceptors([authTokenInterceptor])),
-    ],
+	providers: [
+		provideZoneChangeDetection({ eventCoalescing: true }),
+		provideRouter(routes),
+		provideHttpClient(withInterceptors([authTokenInterceptor]))
+	]
 }

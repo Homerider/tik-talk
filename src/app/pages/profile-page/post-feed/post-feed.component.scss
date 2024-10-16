@@ -1,15 +1,15 @@
 :host {
-    display: grid;
-    grid-gap: 16px;
+	display: grid;
+	grid-gap: 16px;
 }
 
 .feed-content {
-    display: grid;
-    grid-gap: 16px;
-    overflow-y: auto;
-    height: 100%;
+	display: grid;
+	grid-gap: 16px;
+	overflow-y: auto;
+	height: 100%;
 }
 
 .feed-content::-webkit-scrollbar {
-    display: none;
+	display: none;
 }

@@ -1,13 +1,13 @@
 <div class="messages-wrapper" #messagesContainer>
-    <ng-container *ngFor="let groupedMessage of getGroupedMessages()">
-        <div class="date-divider">{{ groupedMessage[0] }}</div>
-        <ng-container *ngFor="let message of groupedMessage[1]">
-            <app-chat-workspace-message
-                [message]="message"></app-chat-workspace-message>
-        </ng-container>
-    </ng-container>
+	<ng-container *ngFor="let groupedMessage of getGroupedMessages()">
+		<div class="date-divider">{{ groupedMessage[0] }}</div>
+		<ng-container *ngFor="let message of groupedMessage[1]">
+			<app-chat-workspace-message
+				[message]="message"></app-chat-workspace-message>
+		</ng-container>
+	</ng-container>
 </div>
 
 <footer class="messages__footer">
-    <app-message-input (created)="onSendMessage($event)"></app-message-input>
+	<app-message-input (created)="onSendMessage($event)"></app-message-input>
 </footer>

@@ -1,7 +1,7 @@
 <app-post-input (created)="onCreatePost($event)"></app-post-input>
 
 <div class="feed-content">
-    <ng-container *ngFor="let post of feed; trackBy: trackByPostId">
-        <app-post [post]="post"></app-post>
-    </ng-container>
+	<ng-container *ngFor="let post of feed; trackBy: trackByPostId">
+		<app-post [post]="post"></app-post>
+	</ng-container>
 </div>

@@ -6,12 +6,12 @@ import { SvgIconComponent } from '../svg-icon/svg-icon.component'
 import { RouterLink } from '@angular/router'
 
 @Component({
-    selector: 'app-profile-card',
-    standalone: true,
-    imports: [ImgUrlPipe, AsyncPipe, SvgIconComponent, RouterLink],
-    templateUrl: './profile-card.component.html',
-    styleUrl: './profile-card.component.scss',
+	selector: 'app-profile-card',
+	standalone: true,
+	imports: [ImgUrlPipe, AsyncPipe, SvgIconComponent, RouterLink],
+	templateUrl: './profile-card.component.html',
+	styleUrl: './profile-card.component.scss'
 })
 export class ProfileCardComponent {
-    @Input() profile!: Profile
+	@Input() profile!: Profile
 }

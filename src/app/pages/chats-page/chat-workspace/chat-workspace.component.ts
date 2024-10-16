@@ -8,22 +8,22 @@ import { switchMap } from 'rxjs'
 import { AsyncPipe } from '@angular/common'
 
 @Component({
-    selector: 'app-chat-workspace',
-    standalone: true,
-    imports: [
-        ChatWorkspaceHeaderComponent,
-        ChatWorkspaceMessagesWrapperComponent,
-        MessageInputComponent,
-        AsyncPipe,
-    ],
-    templateUrl: './chat-workspace.component.html',
-    styleUrl: './chat-workspace.component.scss',
+	selector: 'app-chat-workspace',
+	standalone: true,
+	imports: [
+		ChatWorkspaceHeaderComponent,
+		ChatWorkspaceMessagesWrapperComponent,
+		MessageInputComponent,
+		AsyncPipe
+	],
+	templateUrl: './chat-workspace.component.html',
+	styleUrl: './chat-workspace.component.scss'
 })
 export class ChatWorkspaceComponent {
-    route = inject(ActivatedRoute)
-    chatsService = inject(ChatsService)
+	route = inject(ActivatedRoute)
+	chatsService = inject(ChatsService)
 
-    activeChat$ = this.route.params.pipe(
-        switchMap(({ id }) => this.chatsService.getChatById(id)),
-    )
+	activeChat$ = this.route.params.pipe(
+		switchMap(({ id }) => this.chatsService.getChatById(id))
+	)
 }

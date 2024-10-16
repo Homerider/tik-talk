@@ -9,18 +9,18 @@ import { CommunitiesPagesComponent } from './pages/communities-pages/communities
 import { chatsRoutes } from './pages/chats-page/chatsRoutes'
 
 export const routes: Routes = [
-    {
-        path: '',
-        component: LayoutComponent,
-        children: [
-            { path: '', redirectTo: 'profile/me', pathMatch: 'full' },
-            { path: 'profile/:id', component: ProfilePageComponent },
-            { path: 'search', component: SearchPageComponent },
-            { path: 'settings', component: SettingsPageComponent },
-            { path: 'communities', component: CommunitiesPagesComponent },
-            { path: 'chats', loadChildren: () => chatsRoutes },
-        ],
-        canActivate: [canActivateAuth],
-    },
-    { path: 'login', component: LoginPageComponent },
+	{
+		path: '',
+		component: LayoutComponent,
+		children: [
+			{ path: '', redirectTo: 'profile/me', pathMatch: 'full' },
+			{ path: 'profile/:id', component: ProfilePageComponent },
+			{ path: 'search', component: SearchPageComponent },
+			{ path: 'settings', component: SettingsPageComponent },
+			{ path: 'communities', component: CommunitiesPagesComponent },
+			{ path: 'chats', loadChildren: () => chatsRoutes }
+		],
+		canActivate: [canActivateAuth]
+	},
+	{ path: 'login', component: LoginPageComponent }
 ]
