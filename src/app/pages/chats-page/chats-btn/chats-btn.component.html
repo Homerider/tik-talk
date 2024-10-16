@@ -1,32 +1,32 @@
 @if (chat(); as chat) {
-    <app-avatar-circle
-            class="size32"
-            [avatarUrl]="chat.userFrom.avatarUrl"
-    ></app-avatar-circle>
-
-    <div class="last-message__wrapper">
-        <div class="left-column">
-            <div class="chat-user medium-text">
-                {{ chat.userFrom.firstName }} {{ chat.userFrom.lastName }}
-            </div>
-            <div class="last-message medium-text">
-                {{ chat.message ?? '...' }}
-            </div>
-        </div>
-
-        <div class="right-column">
-            <div class="time-message">
-                <span class="time">{{ formatShortTime(chat.createdAt, 'ru') }}</span>
-                <span class="date">{{ formatFullDate(chat.createdAt, 'ru') }}</span>
-            </div>
-            <div class="message-counters">
-                <div class="message-amount" *ngIf="chat.unreadMessages > 0">
-                    <svg icon="comment" class="svg16"></svg>
-                    <span class="message-length">{{ chat.unreadMessages }}</span>
-                </div>
-            </div>
-        </div>
+  <app-avatar-circle
+    class="size32"
+    [avatarUrl]="chat.userFrom.avatarUrl"
+  ></app-avatar-circle>
+<!--9999999-->
+  <div class="last-message__wrapper">
+    <div class="left-column">
+      <div class="chat-user medium-text">
+        {{ chat.userFrom.firstName }} {{ chat.userFrom.lastName }}
+      </div>
+      <div class="last-message medium-text">
+        {{ chat.message ?? '...' }}
+      </div>
     </div>
+
+    <div class="right-column">
+      <div class="time-message">
+        <span class="time">{{ formatShortTime(chat.createdAt, 'ru') }}</span>
+        <span class="date">{{ formatFullDate(chat.createdAt, 'ru') }}</span>
+      </div>
+      <div class="message-counters">
+        <div class="message-amount" *ngIf="chat.unreadMessages > 0">
+          <svg icon="comment" class="svg16"></svg>
+          <span class="message-length">{{ chat.unreadMessages }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
 }
 
 
