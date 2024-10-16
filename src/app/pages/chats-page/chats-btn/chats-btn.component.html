@@ -16,12 +16,13 @@
 
         <div class="right-column">
             <div class="time-message">
-                {{ formatShortTime(chat.createdAt, 'ru') }} {{ formatFullDate(chat.createdAt, 'ru') }}
+                <span class="time">{{ formatShortTime(chat.createdAt, 'ru') }}</span>
+                <span class="date">{{ formatFullDate(chat.createdAt, 'ru') }}</span>
             </div>
             <div class="message-counters">
                 <div class="message-amount">
                     <svg icon="comment" class="svg16"></svg>
-<!--                    <span class="message-length">{{ messages()?.length }}</span>-->
+                    <span class="message-length">{{ unreadMessages().length }}</span>
                 </div>
             </div>
         </div>

@@ -5,6 +5,7 @@ import {DateTime} from "luxon";
 import {SvgIconComponent} from "../../../common-ui/svg-icon/svg-icon.component";
 import {ChatsService} from "../../../data/services/chats.service";
 import {NgIf} from "@angular/common";
+import {PostComment} from "../../../data/interfaces/post.interface";
 
 @Component({
   selector: 'button[chats]',
@@ -19,7 +20,20 @@ import {NgIf} from "@angular/common";
 })
 export class ChatsBtnComponent {
   chat = input<LastMessageRes>()
+  unreadMessages = signal<LastMessageRes[]>([]); // Динамическое хранилище для сообщений
 
+  // Метод для добавления нового непрочитанного сообщения
+  addUnreadMessage(message: LastMessageRes) {
+    console.log('Adding unread message:', message);
+    this.unreadMessages.update(messages => [...messages, message]);
+  }
+
+  // Метод для обновления прочитанного сообщения
+  markAsRead(messageId: number) {
+    this.unreadMessages.update(messages =>
+        messages.filter(message => message.id !== messageId)
+    );
+  }
 
   formatShortTime(dateString: string, locale: string = 'ru'): string {
     const date = DateTime.fromISO(dateString);

@@ -49,7 +49,13 @@
 }
 
 .time-message {
+  display: flex;
   color: var(--light-transparent-color);
+  white-space: nowrap;
+}
+
+.time {
+  margin-right: 5px;
 }
 
 .last-message {
@@ -60,6 +66,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  justify-content: flex-end;
 }
 
 .message-length {
