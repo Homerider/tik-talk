@@ -1,28 +1,28 @@
 :host {
-  display: grid;
-  grid-template-columns: 32px 1fr;
-  grid-gap: 16px;
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    grid-gap: 16px;
 }
 
 .comment-body {
-  display: grid;
-  grid-gap: 8px;
+    display: grid;
+    grid-gap: 8px;
 }
 
 .comment-header {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  color: var(--light-color);
-  width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    color: var(--light-color);
+    width: 100%;
 }
 
 .right-column {
-  text-align: right;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
 }
 
 .comments {
-  text-shadow: 2px 2px 2px var(--primary-color);
+    text-shadow: 2px 2px 2px var(--primary-color);
 }

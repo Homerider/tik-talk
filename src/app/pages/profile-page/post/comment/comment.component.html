@@ -1,23 +1,21 @@
 <app-avatar-circle
-        class="size32"
-        [avatarUrl]="comment.author.avatarUrl"
-></app-avatar-circle>
+    class="size32"
+    [avatarUrl]="comment.author.avatarUrl"></app-avatar-circle>
 
-    <div class="comment-body">
-        <header class="comment-header">
-            <span class="medium-text">{{ comment.author.username }}</span>
-            <div class="right-column">
-                <span class="medium-text">
-                    {{ formatFullDate(comment.createdAt, 'ru') }}
-                </span>
-                <span class="medium-text">
-                    {{ comment.createdAt | timePipe: 'ru' }}
-                </span>
-            </div>
-        </header>
-
-        <div class="h7 comments">
-            {{ comment.text }}
+<div class="comment-body">
+    <header class="comment-header">
+        <span class="medium-text">{{ comment.author.username }}</span>
+        <div class="right-column">
+            <span class="medium-text">
+                {{ formatFullDate(comment.createdAt, 'ru') }}
+            </span>
+            <span class="medium-text">
+                {{ comment.createdAt | timePipe: 'ru' }}
+            </span>
         </div>
-    </div>
+    </header>
 
+    <div class="h7 comments">
+        {{ comment.text }}
+    </div>
+</div>

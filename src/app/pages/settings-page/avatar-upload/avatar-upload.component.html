@@ -1,28 +1,25 @@
 @if (me(); as me) {
     @if (me.avatarUrl) {
-        <img [src]="me.avatarUrl | imgUrl" alt=""  class="avatar">
+        <img [src]="me.avatarUrl | imgUrl" alt="" class="avatar" />
     } @else {
-        <img src="/assets/imgs/avatar-placeholder.png" alt="" class="avatar">
+        <img src="/assets/imgs/avatar-placeholder.png" alt="" class="avatar" />
     }
 }
 
 <div
-        dnd
-        class="dropzone"
-        (keyup.enter)="fileDrop.click()"
-        (fileDropped)="onFileDropped($event)"
->
-
+    dnd
+    class="dropzone"
+    (keyup.enter)="fileDrop.click()"
+    (fileDropped)="onFileDropped($event)">
     <div class="dropzone-content">
         <svg icon="upload"></svg>
         <span class="medium-text">Перетащите изображение или Загрузите</span>
     </div>
 
     <input
-            tabindex="-1"
-            class="avatar-input"
-            type="file"
-            #fileDrop
-            (change)="fileBrowserHandler($event)"
-    >
+        tabindex="-1"
+        class="avatar-input"
+        type="file"
+        #fileDrop
+        (change)="fileBrowserHandler($event)" />
 </div>

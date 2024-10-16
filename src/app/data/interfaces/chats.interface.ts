@@ -1,7 +1,7 @@
-import {Profile} from "./profile.interface";
+import { Profile } from './profile.interface'
 
 export interface Chat {
-    id: number,
+    id: number
     userFirst: Profile
     userSecond: Profile
     messages: Message[]
@@ -10,12 +10,12 @@ export interface Chat {
 }
 
 export interface Message {
-    id: number,
-    userFromId: number,
-    personalChatId: number,
-    text: string,
-    createdAt: string,
-    isRead: boolean,
+    id: number
+    userFromId: number
+    personalChatId: number
+    text: string
+    createdAt: string
+    isRead: boolean
     updatedAt: string
     user?: Profile
     isMine?: boolean

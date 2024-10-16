@@ -1,61 +1,59 @@
-<img
-  src="/assets/svg/logo-small.svg"
-  class="ml16 mb20 logo"
-  appClick
-  alt=""
->
+<img src="/assets/svg/logo-small.svg" class="ml16 mb20 logo" appClick alt="" />
 
 <nav class="mb20">
-  <ul class="main-menu-list">
-    <li *ngFor="let menuItem of menuItems">
-      <a
-        class="menu-item"
-        [routerLink]="[menuItem.link]"
-        routerLinkActive="active"
-        (click)="toggleSearch(menuItem.label, $event.target)"
-        [class.active]="menuItem.label === activeButton"
-      >
-        <svg [icon]="menuItem.icon"></svg>
-        <span>{{ menuItem.label }}</span>
-      </a>
-        <ng-container *ngIf="menuItem.label === 'Сообщества' && showSearch">
-            <div class="search-container">
-            <input type="text" placeholder="Поиск сообществ..." class="search-communities"/>
-                <a [routerLink]="['communities']">
-                    <svg class="search-communities-svg" icon="search"></svg>
-                </a>
-            </div>
-        </ng-container>
-    </li>
-  </ul>
+    <ul class="main-menu-list">
+        <li *ngFor="let menuItem of menuItems">
+            <a
+                class="menu-item"
+                [routerLink]="[menuItem.link]"
+                routerLinkActive="active"
+                (click)="toggleSearch(menuItem.label, $event.target)"
+                [class.active]="menuItem.label === activeButton">
+                <svg [icon]="menuItem.icon"></svg>
+                <span>{{ menuItem.label }}</span>
+            </a>
+            <ng-container *ngIf="menuItem.label === 'Сообщества' && showSearch">
+                <div class="search-container">
+                    <input
+                        type="text"
+                        placeholder="Поиск сообществ..."
+                        class="search-communities" />
+                    <a [routerLink]="['communities']">
+                        <svg class="search-communities-svg" icon="search"></svg>
+                    </a>
+                </div>
+            </ng-container>
+        </li>
+    </ul>
 </nav>
 
 <p class="medium-text mb20">Подписчики</p>
 
 @for (subscriber of subscribers$ | async; track subscriber.id) {
-  <app-subscriber-card
-    [profile]="subscriber"
-  ></app-subscriber-card>
+    <app-subscriber-card [profile]="subscriber"></app-subscriber-card>
 }
 
 <div class="mt20 to-subscribers">
-  <a
-    [routerLink]="['/subscribers']"
-    class="to-subscribers-link medium-text">Все подписчики</a>
-  <svg icon="arrow" class="to-subscribers-icon"></svg>
+    <a [routerLink]="['/subscribers']" class="to-subscribers-link medium-text"
+        >Все подписчики</a
+    >
+    <svg icon="arrow" class="to-subscribers-icon"></svg>
 </div>
-
 
 <footer class="sidebar__footer">
     <ng-container *ngIf="me as currentUser">
         <ng-container *ngIf="currentUser.avatarUrl; else avatarPlaceholder">
-            <img class="footer-img"
-                    [src]="currentUser.avatarUrl | imgUrl" alt=""
-                 (click)="toggleLogoutButton()" />
+            <img
+                class="footer-img"
+                [src]="currentUser.avatarUrl | imgUrl"
+                alt=""
+                (click)="toggleLogoutButton()" />
         </ng-container>
         <ng-template #avatarPlaceholder>
-            <img src="/assets/imgs/avatar-placeholder.png" alt=""
-                 (click)="toggleLogoutButton()" />
+            <img
+                src="/assets/imgs/avatar-placeholder.png"
+                alt=""
+                (click)="toggleLogoutButton()" />
         </ng-template>
 
         <div class="medium-text username-text">{{ currentUser.username }}</div>
@@ -67,15 +65,13 @@
 
     <footer class="btn-content-wrapper">
         <ng-container *ngIf="showLogoutButton">
-            <a class="btn-content-out"
-               [routerLink]="['/login']"
-               (click)="toggleLogoutButton()">
+            <a
+                class="btn-content-out"
+                [routerLink]="['/login']"
+                (click)="toggleLogoutButton()">
                 <svg icon="out" class="content-icon"></svg>
                 <div class="medium-text mb20 out-text">Выход</div>
             </a>
         </ng-container>
     </footer>
 </footer>
-
-
-

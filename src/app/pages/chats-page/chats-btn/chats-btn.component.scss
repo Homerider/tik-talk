@@ -1,78 +1,78 @@
 :host {
-  width: 100%;
-  background: none;
-  border: none;
-  border-bottom: var(--light-border);
-  padding: 24px 20px;
-  display: grid;
-  grid-template-columns: 32px 1fr;
-  grid-gap: 16px;
-  cursor: pointer;
+    width: 100%;
+    background: none;
+    border: none;
+    border-bottom: var(--light-border);
+    padding: 24px 20px;
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    grid-gap: 16px;
+    cursor: pointer;
 }
 
 :host:hover,
 :host:focus-visible,
 :host.active {
-  background: var(--dark-active-color);
+    background: var(--dark-active-color);
 }
 
 :host.active .chat-user,
 :host.active .last-message,
 :host.active .time-message {
-  color: var(--primary-color);
+    color: var(--primary-color);
 }
 
 .last-message__wrapper {
-  display: flex;
-  justify-content: space-between;
-  color: var(--light-color);
-  grid-gap: 16px;
+    display: flex;
+    justify-content: space-between;
+    color: var(--light-color);
+    grid-gap: 16px;
 }
 
 .left-column {
-  display: flex;
-  gap: 16px;
-  flex-direction: column;
-  justify-content: space-between;
-  text-align: left;
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: left;
 }
 
 .right-column {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  text-align: right;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: right;
 }
 
 .chat-user {
-  color: var(--light-transparent-color);
+    color: var(--light-transparent-color);
 }
 
 .time-message {
-  display: flex;
-  color: var(--light-transparent-color);
-  white-space: nowrap;
+    display: flex;
+    color: var(--light-transparent-color);
+    white-space: nowrap;
 }
 
 .time {
-  margin-right: 5px;
+    margin-right: 5px;
 }
 
 .last-message {
-  color: var(--light-color);
+    color: var(--light-color);
 }
 
 .message-amount {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  justify-content: flex-end;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: flex-end;
 }
 
 .message-length {
-  color: var(--primary-color);
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 16px;
+    color: var(--primary-color);
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 16px;
 }

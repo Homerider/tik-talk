@@ -1,93 +1,93 @@
 .community-card {
-  border-bottom: 1px solid var(--light-color);
-  padding: 32px 24px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 170px;
-  grid-gap: 32px;
-  justify-content: space-between;
-  align-items: center;
+    border-bottom: 1px solid var(--light-color);
+    padding: 32px 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 170px;
+    grid-gap: 32px;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .community-card__action-btn {
-  display: flex;
+    display: flex;
 }
 
 .community-btn {
-  width: 170px;
-  height: 44px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: var(--primary-color);
-  border-radius: 4px;
+    width: 170px;
+    height: 44px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--primary-color);
+    border-radius: 4px;
 
-  .svg-subscribe-icon {
-    width: 16px;
-    height: 16px;
-  }
-
-  &:hover,
-  &:focus {
     .svg-subscribe-icon {
-      color: var(--light-color);
+        width: 16px;
+        height: 16px;
     }
-    border: 1px solid var(--light-color);
-  }
+
+    &:hover,
+    &:focus {
+        .svg-subscribe-icon {
+            color: var(--light-color);
+        }
+        border: 1px solid var(--light-color);
+    }
 }
 
 .community-name {
-  display: grid;
-  grid-template-columns: 100px 250px;
-  grid-gap: 20px;
+    display: grid;
+    grid-template-columns: 100px 250px;
+    grid-gap: 20px;
 }
 
 .community-card__avatar {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  overflow: hidden;
-  cursor: pointer;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
 
-  &:hover,
-  &:focus {
-    padding: 3px;
-    border: 1px solid var(--light-color);
-  }
+    &:hover,
+    &:focus {
+        padding: 3px;
+        border: 1px solid var(--light-color);
+    }
 }
 
 .label-name {
-  &:hover {
-    color: var(--primary-color);
-    text-decoration: underline;
-    cursor: pointer;
+    &:hover {
+        color: var(--primary-color);
+        text-decoration: underline;
+        cursor: pointer;
     }
-  }
+}
 
 .community-card__name {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
 .subscribers-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .subscriber-avatar-btn {
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  overflow: hidden;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    overflow: hidden;
 
-  &:hover,
-  &:focus {
-    border: 1px solid var(--light-color);
-  }
+    &:hover,
+    &:focus {
+        border: 1px solid var(--light-color);
+    }
 }
 
 .svg-subscribed-icon {
-  width: 16px;
-  height: 16px;
+    width: 16px;
+    height: 16px;
 }

@@ -1,36 +1,41 @@
 @if (profile$ | async; as profile) {
-        <app-profile-header
-                [profile]="profile"
-        ></app-profile-header>
+    <app-profile-header [profile]="profile"></app-profile-header>
 }
-
 
 <form class="profile-form__wrapper" [formGroup]="form">
     <div class="profile-form">
         <div class="two-columns">
             <label class="tt-form-label">
                 <span class="tt-form-label__text">Имя</span>
-                <input type="text" class="tt-form-input" formControlName="firstName">
+                <input
+                    type="text"
+                    class="tt-form-input"
+                    formControlName="firstName" />
             </label>
 
             <label class="tt-form-label">
                 <span class="tt-form-label__text">Фамилия</span>
-                <input type="text" class="tt-form-input" formControlName="lastName">
+                <input
+                    type="text"
+                    class="tt-form-input"
+                    formControlName="lastName" />
             </label>
         </div>
 
         <label class="tt-form-label">
             <span class="tt-form-label__text">Telegram username</span>
-            <input type="text" class="tt-form-input" formControlName="username">
+            <input
+                type="text"
+                class="tt-form-input"
+                formControlName="username" />
         </label>
 
         <label class="tt-form-label">
             <span class="tt-form-label__text">О себе</span>
             <textarea
-                    formControlName="description"
-                    class="tt-form-input tt-textarea"
-                    rows="4"
-            ></textarea>
+                formControlName="description"
+                class="tt-form-input tt-textarea"
+                rows="4"></textarea>
         </label>
 
         <label class="tt-form-label">
@@ -38,19 +43,21 @@
             <app-avatar-upload [avatarInput]="avatar"></app-avatar-upload>
         </label>
 
-
         <label class="tt-form-label">
             <span class="tt-form-label__text">Навыки (стэк)</span>
-            <input type="text" class="tt-form-input" formControlName="stack">
+            <input type="text" class="tt-form-input" formControlName="stack" />
         </label>
     </div>
 
     <div class="settings-btn-footer">
         <div class="btn-wrapper-out-delete">
-        <a class="btn-content-out" [routerLink]="['/login']">
-            <svg icon="out" class="content-icon-out"></svg>
-        </a>
-            <button class="btn-content-delete" type="button" (click)="onDelete()">
+            <a class="btn-content-out" [routerLink]="['/login']">
+                <svg icon="out" class="content-icon-out"></svg>
+            </a>
+            <button
+                class="btn-content-delete"
+                type="button"
+                (click)="onDelete()">
                 <svg icon="delete" class="content-icon-delete"></svg>
             </button>
         </div>

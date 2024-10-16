@@ -1,15 +1,15 @@
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core'
+import { provideRouter } from '@angular/router'
 
-import { routes } from './app.routes';
-import {provideHttpClient, withInterceptors} from "@angular/common/http";
-import {authTokenInterceptor} from "./auth/auth.interceptor";
+import { routes } from './app.routes'
+import { provideHttpClient, withInterceptors } from '@angular/common/http'
+import { authTokenInterceptor } from './auth/auth.interceptor'
 
-export let appConfig: ApplicationConfig;
+export let appConfig: ApplicationConfig
 appConfig = {
-  providers: [
-    provideZoneChangeDetection({eventCoalescing: true}),
-    provideRouter(routes),
-    provideHttpClient(withInterceptors([authTokenInterceptor]))
-  ]
-};
+    providers: [
+        provideZoneChangeDetection({ eventCoalescing: true }),
+        provideRouter(routes),
+        provideHttpClient(withInterceptors([authTokenInterceptor])),
+    ],
+}

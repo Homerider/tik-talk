@@ -1,13 +1,12 @@
-import {inject, Injectable, signal} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
-import {Chat, LastMessageRes, Message} from "../interfaces/chats.interface";
-import {ProfileService} from "./profile.service";
-import {map, single} from "rxjs";
+import { inject, Injectable, signal } from '@angular/core'
+import { HttpClient } from '@angular/common/http'
+import { Chat, LastMessageRes, Message } from '../interfaces/chats.interface'
+import { ProfileService } from './profile.service'
+import { map, single } from 'rxjs'
 
 @Injectable({
-    providedIn: 'root'
+    providedIn: 'root',
 })
-
 export class ChatsService {
     http = inject(HttpClient)
     me = inject(ProfileService).me
@@ -27,13 +26,16 @@ export class ChatsService {
     }
 
     getChatById(chatId: number) {
-        return this.http.get<Chat>(`${this.chatsUrl}${chatId}`)
-            .pipe(map(chat => {
-                const patchedMessages = chat.messages.map(message => {
+        return this.http.get<Chat>(`${this.chatsUrl}${chatId}`).pipe(
+            map((chat) => {
+                const patchedMessages = chat.messages.map((message) => {
                     return {
                         ...message,
-                        user: chat.userFirst.id === message.userFromId ? chat.userFirst : chat.userSecond,
-                        isMine: message.userFromId === this.me()!.id
+                        user:
+                            chat.userFirst.id === message.userFromId
+                                ? chat.userFirst
+                                : chat.userSecond,
+                        isMine: message.userFromId === this.me()!.id,
                     }
                 })
 
@@ -41,22 +43,25 @@ export class ChatsService {
 
                 return {
                     ...chat,
-                    companion: chat.userFirst.id === this.me()!.id ? chat.userSecond : chat.userFirst,
-                    messages: patchedMessages
-
-
+                    companion:
+                        chat.userFirst.id === this.me()!.id
+                            ? chat.userSecond
+                            : chat.userFirst,
+                    messages: patchedMessages,
                 }
-            }))
+            }),
+        )
     }
 
     sendMessage(chatId: number, message: string) {
-        return this.http.post(`${this.messageUrl}send/${chatId}`, {}, {
-            params: {
-                message
-            }
-        })
+        return this.http.post(
+            `${this.messageUrl}send/${chatId}`,
+            {},
+            {
+                params: {
+                    message,
+                },
+            },
+        )
     }
 }
-
-
-
