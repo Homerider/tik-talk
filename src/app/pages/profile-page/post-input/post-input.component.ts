@@ -3,9 +3,8 @@ import {AvatarCircleComponent} from "../../../common-ui/avatar-circle/avatar-cir
 import {NgIf} from "@angular/common";
 import {ProfileService} from "../../../data/services/profile.service";
 import {SvgIconComponent} from "../../../common-ui/svg-icon/svg-icon.component";
-import {PostService} from "../../../data/services/post.service";
 import {FormsModule} from "@angular/forms";
-import {firstValueFrom} from "rxjs";
+
 
 @Component({
   selector: 'app-post-input',

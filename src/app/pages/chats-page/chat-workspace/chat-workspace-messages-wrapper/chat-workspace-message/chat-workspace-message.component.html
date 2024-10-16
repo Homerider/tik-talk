@@ -9,7 +9,7 @@
         <span class="time medium-text mb4"> {{ formatShortTime(message.createdAt, 'ru') }} </span>
         <span class="name medium-text mb4"> {{ message.user?.firstName }} {{ message.user?.lastName }} </span>
         </div>
-        <p class="time-pipe medium-text mb8">{{ message.createdAt | TimePipe: 'ru' }}</p>
+        <p class="time-pipe medium-text mb8">{{ message.createdAt | timePipe: 'ru' }}</p>
         <div class="message-text medium-text">
             {{ message.text }}
         </div>

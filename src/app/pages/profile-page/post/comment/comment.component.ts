@@ -3,7 +3,7 @@ import {AvatarCircleComponent} from "../../../../common-ui/avatar-circle/avatar-
 import {DatePipe} from "@angular/common";
 import {PostComment} from "../../../../data/interfaces/post.interface";
 import {DateTime} from "luxon";
-import {TimePipe} from "../../../../helpers/pipes/time.pipe";
+import {timePipe} from "../../../../helpers/pipes/time.pipe";
 
 @Component({
   selector: 'app-comment',
@@ -11,7 +11,7 @@ import {TimePipe} from "../../../../helpers/pipes/time.pipe";
   imports: [
     AvatarCircleComponent,
     DatePipe,
-    TimePipe
+    timePipe
   ],
   templateUrl: './comment.component.html',
   styleUrl: './comment.component.scss'

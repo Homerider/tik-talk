@@ -1,12 +1,11 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import {DateTime} from "luxon";
-import {dateTimestampProvider} from "rxjs/internal/scheduler/dateTimestampProvider";
 
 @Pipe({
   standalone: true,
-  name: 'TimePipe'
+  name: 'timePipe'
 })
-export class TimePipe implements PipeTransform {
+export class timePipe implements PipeTransform {
 
 
   transform(value: string, locale: string = 'ru', timeZone: string = 'Europe/Moscow'): string {

@@ -1,13 +1,11 @@
 import {
   Component,
   ElementRef,
-  EventEmitter,
   HostListener,
   inject,
   input,
-  Output,
   Renderer2,
-  signal, ViewChild
+  ViewChild
 } from '@angular/core';
 import {ChatWorkspaceMessageComponent} from "./chat-workspace-message/chat-workspace-message.component";
 import {MessageInputComponent} from "../../../../common-ui/message-input/message-input.component";
@@ -42,12 +40,6 @@ export class ChatWorkspaceMessagesWrapperComponent {
 
   constructor() {
     this.startMessagePolling();
-  }
-
-  async onChatClicked(selectedChat: Chat) {
-    this.chat.set(selectedChat); // Обновите выбранный чат
-    await firstValueFrom(this.chatsService.getChatById(selectedChat.id)); // Получите сообщения для выбранного чата
-    this.scrollToBottom(); // Прокрутите вниз к последнему сообщению
   }
 
   private startMessagePolling() {

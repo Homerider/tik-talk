@@ -3,7 +3,8 @@ import {Message} from "../../../../../data/interfaces/chats.interface";
 import {AvatarCircleComponent} from "../../../../../common-ui/avatar-circle/avatar-circle.component";
 import {DatePipe} from "@angular/common";
 import {DateTime} from "luxon";
-import {TimePipe} from "../../../../../helpers/pipes/time.pipe";
+import {timePipe} from "../../../../../helpers/pipes/time.pipe";
+
 
 @Component({
   selector: 'app-chat-workspace-message',
@@ -11,7 +12,7 @@ import {TimePipe} from "../../../../../helpers/pipes/time.pipe";
   imports: [
     AvatarCircleComponent,
     DatePipe,
-    TimePipe
+    timePipe
   ],
   templateUrl: './chat-workspace-message.component.html',
   styleUrl: './chat-workspace-message.component.scss'

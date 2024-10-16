@@ -9,7 +9,7 @@
             <strong class="post__author">
                 {{ post.author.firstName }} {{ post.author.lastName }}
                 {{ formatShortTime(post.createdAt, 'ru') }} - {{ formatFullDate(post.createdAt, 'ru') }}
-                <p class="post-created-at">{{ post.createdAt | TimePipe: 'ru' }}</p>
+                <p class="post-created-at">{{ post.createdAt | timePipe: 'ru' }}</p>
             </strong>
         </div>
 
