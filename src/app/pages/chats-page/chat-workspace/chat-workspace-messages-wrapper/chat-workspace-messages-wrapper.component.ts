@@ -31,6 +31,8 @@ import {NgForOf} from "@angular/common";
   styleUrl: './chat-workspace-messages-wrapper.component.scss'
 })
 export class ChatWorkspaceMessagesWrapperComponent {
+  @ViewChild('messagesContainer') messagesContainer!: ElementRef;
+
   chatsService = inject(ChatsService);
   hostElement = inject(ElementRef);
   chat = input.required<Chat>();
@@ -39,25 +41,36 @@ export class ChatWorkspaceMessagesWrapperComponent {
   r2 = inject(Renderer2);
 
   constructor() {
-    // Запуск таймера для периодической подгрузки новых сообщений
     this.startMessagePolling();
   }
 
-  // Новый метод для периодического запроса сообщений
+  async onChatClicked(selectedChat: Chat) {
+    this.chat.set(selectedChat); // Обновите выбранный чат
+    await firstValueFrom(this.chatsService.getChatById(selectedChat.id)); // Получите сообщения для выбранного чата
+    this.scrollToBottom(); // Прокрутите вниз к последнему сообщению
+  }
+
   private startMessagePolling() {
-    timer(0, 3600000) // Запуск сразу (0) и затем каждый час
-        .pipe(takeUntil(this.destroy$)) // Завершение подписки при уничтожении компонента
+    timer(0, 1800000) // Запуск сразу (0) и затем каждые 30 минут
+        .pipe(takeUntil(this.destroy$))
         .subscribe(async () => {
           await firstValueFrom(this.chatsService.getChatById(this.chat().id));
-          // возможно, вам нужно обновить массив сообщений вручную, если он не обновляется автоматически
+          this.scrollToBottom(); // Прокрутка вниз после обновления
         });
   }
 
-  // Метод для отправки сообщения
   async onSendMessage(messageText: string) {
     await firstValueFrom(this.chatsService.sendMessage(this.chat().id, messageText));
-    await firstValueFrom(this.chatsService.getChatById(this.chat().id)); // Обновление сообщений после отправки
+    await firstValueFrom(this.chatsService.getChatById(this.chat().id));
+    this.scrollToBottom(); // Прокрутка вниз после отправки
   }
+
+  private scrollToBottom() {
+    if (this.messagesContainer) {
+      this.messagesContainer.nativeElement.scrollTop = this.messagesContainer.nativeElement.scrollHeight;
+    }
+  }
+
 
   // Обработчик изменения размера окна
   @HostListener('window:resize')

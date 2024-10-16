@@ -1,4 +1,4 @@
-<div class="messages-wrapper">
+<div class="messages-wrapper" #messagesContainer>
     <ng-container *ngFor="let groupedMessage of getGroupedMessages()">
         <div class="date-divider">{{ groupedMessage[0] }}</div>
         <ng-container *ngFor="let message of groupedMessage[1]">
