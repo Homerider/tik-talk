@@ -3,9 +3,9 @@ import {AvatarCircleComponent} from "../../../common-ui/avatar-circle/avatar-cir
 import {Chat, LastMessageRes, Message} from "../../../data/interfaces/chats.interface";
 import {DateTime} from "luxon";
 import {SvgIconComponent} from "../../../common-ui/svg-icon/svg-icon.component";
-import {ChatsService} from "../../../data/services/chats.service";
 import {NgIf} from "@angular/common";
-import {PostComment} from "../../../data/interfaces/post.interface";
+import {PostService} from "../../../data/services/post.service";
+
 
 @Component({
   selector: 'button[chats]',
@@ -19,21 +19,8 @@ import {PostComment} from "../../../data/interfaces/post.interface";
   styleUrl: './chats-btn.component.scss'
 })
 export class ChatsBtnComponent {
-  chat = input<LastMessageRes>()
-  unreadMessages = signal<LastMessageRes[]>([]); // Динамическое хранилище для сообщений
+  chat = input<LastMessageRes>();
 
-  // Метод для добавления нового непрочитанного сообщения
-  addUnreadMessage(message: LastMessageRes) {
-    console.log('Adding unread message:', message);
-    this.unreadMessages.update(messages => [...messages, message]);
-  }
-
-  // Метод для обновления прочитанного сообщения
-  markAsRead(messageId: number) {
-    this.unreadMessages.update(messages =>
-        messages.filter(message => message.id !== messageId)
-    );
-  }
 
   formatShortTime(dateString: string, locale: string = 'ru'): string {
     const date = DateTime.fromISO(dateString);
