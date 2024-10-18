@@ -31,8 +31,8 @@ export class ChatWorkspaceMessageComponent {
 	}
 
 	formatShortTime(dateString: string, locale: string = 'ru'): string {
-		const date = DateTime.fromISO(dateString)
-			.plus({ hours: 3 })
+		const date = DateTime.fromISO(dateString, { zone: 'utc' }) // предполагаем, что исходная дата в UTC
+			.setZone(DateTime.local().zone) // устанавливаем зону по умолчанию для браузера
 			.setLocale(locale)
 		return date.toFormat('HH:mm')
 	}

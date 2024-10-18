@@ -15,12 +15,10 @@ export class timePipe implements PipeTransform {
 			return 'Нет данных'
 		}
 
-		const date = DateTime.fromISO(value).setZone(timeZone).setLocale(locale)
-		const now = DateTime.now()
+		const date = DateTime.fromISO(value, { zone: 'utc' })
 			.setZone(timeZone)
-			.minus({ hours: 3 })
 			.setLocale(locale)
-
+		const now = DateTime.now().setZone(timeZone).setLocale(locale)
 		const diffInSeconds = Math.floor(now.diff(date, 'seconds').seconds)
 
 		const getTimeAgoString = (

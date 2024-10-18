@@ -111,8 +111,8 @@ export class ChatWorkspaceMessagesWrapperComponent {
 		const yesterday = today.minus({ days: 1 })
 
 		messagesArray.forEach((message: Message) => {
-			const messageDate = DateTime.fromISO(message.createdAt)
-				.plus({ hours: 3 })
+			const messageDate = DateTime.fromISO(message.createdAt, { zone: 'utc' })
+				.setZone(DateTime.local().zone)
 				.startOf('day')
 
 			// Определяем, какую метку использовать

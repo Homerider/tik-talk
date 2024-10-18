@@ -15,9 +15,9 @@ import { timePipe } from '../../../../helpers/pipes/time.pipe'
 export class CommentComponent {
 	@Input() comment!: PostComment
 
-	formatFullDate(dateString: string, locale: string = 'en'): string {
-		const date = DateTime.fromISO(dateString)
-			.plus({ hours: 3 })
+	formatFullDate(dateString: string, locale: string = 'ru'): string {
+		const date = DateTime.fromISO(dateString, { zone: 'utc' })
+			.setZone(DateTime.local().zone)
 			.setLocale(locale)
 
 		return date.toFormat('HH:mm dd.MM.yyyy')

@@ -21,20 +21,24 @@ export class ChatsBtnComponent {
 	chat = input<LastMessageRes>()
 
 	formatShortTime(dateString: string, locale: string = 'ru'): string {
-		const date = DateTime.fromISO(dateString)
+		const date = DateTime.fromISO(dateString, { zone: 'utc' }).setZone(
+			DateTime.local().zone
+		)
 
 		if (!date.isValid) {
-			return '' // Возвращаем пустую строку если дата недействительна
+			return '' // Возвращаем пустую строку, если дата недействительна
 		}
 
-		return date.plus({ hours: 3 }).setLocale(locale).toFormat('HH:mm')
+		return date.setLocale(locale).toFormat('HH:mm')
 	}
 
 	formatFullDate(dateString: string, locale: string = 'ru'): string {
-		const date = DateTime.fromISO(dateString)
+		const date = DateTime.fromISO(dateString, { zone: 'utc' }).setZone(
+			DateTime.local().zone
+		)
 
 		if (!date.isValid) {
-			return '' // Возвращаем пустую строку если дата недействительна
+			return '' // Возвращаем пустую строку, если дата недействительна
 		}
 
 		return date.setLocale(locale).toFormat('dd.MM.yy')
