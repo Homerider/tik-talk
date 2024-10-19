@@ -39,6 +39,8 @@ export class ChatsService {
 					}
 				})
 
+				// todo
+
 				this.activeChatMessages.set(patchedMessages)
 
 				return {

@@ -36,44 +36,7 @@ export class PostComponent implements OnInit {
 	timeMapping = {
 		'0': 'Только что',
 		one: '1 секунда назад',
-		other: '# секунд назад',
-
-		'1m': '1 минута назад',
-		'2m': '# минут назад',
-
-		'1h': '1 час назад',
-		'2h': '# часов назад',
-
-		'1d': '1 день назад',
-		'2d': '# дней назад'
-	}
-
-	// Метод returnDifference вернёт количество разницы во времени
-	get returnDifference(): number {
-		const now = DateTime.local()
-		const createdAt = DateTime.fromISO(this.post()!.createdAt, { zone: 'utc' })
-			.setZone(DateTime.local().zone)
-			.setLocale(this.locale)
-
-		return Math.floor(now.diff(createdAt, 'seconds').seconds)
-	}
-
-	// Метод для возврата строки для отображения
-	get timeDifference(): string {
-		const diffInSeconds = this.returnDifference
-
-		if (diffInSeconds < 60) {
-			return diffInSeconds === 1 ? 'one' : 'other'
-		} else if (diffInSeconds < 3600) {
-			const minutes = Math.floor(diffInSeconds / 60)
-			return minutes === 1 ? '1m' : '2m'
-		} else if (diffInSeconds < 86400) {
-			const hours = Math.floor(diffInSeconds / 3600)
-			return hours === 1 ? '1h' : '2h'
-		} else {
-			const days = Math.floor(diffInSeconds / 86400)
-			return days === 1 ? '1d' : '2d'
-		}
+		other: '# секунд назад'
 	}
 
 	async ngOnInit() {

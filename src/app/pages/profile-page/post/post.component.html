@@ -10,7 +10,7 @@
 				{{ formatShortTime(post.createdAt, 'ru') }} -
 				{{ formatFullDate(post.createdAt, 'ru') }}
         <p class="post-created-at">
-          {{ returnDifference | i18nPlural: timeMapping }}
+          {{ post.createdAt | timePipe}}
         </p>
 			</strong>
 		</div>

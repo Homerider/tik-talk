@@ -19,10 +19,12 @@
 				<span class="date">{{ formatFullDate(chat.createdAt, 'ru') }}</span>
 			</div>
 			<div class="message-counters">
-				<div class="message-amount" *ngIf="chat.unreadMessages > 0">
+        @if (chat.unreadMessages > 0) {
+				<div class="message-amount">
 					<svg icon="comment" class="svg16"></svg>
 					<span class="message-length">{{ chat.unreadMessages }}</span>
 				</div>
+        }
 			</div>
 		</div>
 	</div>
