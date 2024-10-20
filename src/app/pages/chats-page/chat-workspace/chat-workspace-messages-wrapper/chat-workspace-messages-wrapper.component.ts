@@ -42,8 +42,8 @@ export class ChatWorkspaceMessagesWrapperComponent {
 	hostElement = inject(ElementRef)
 	chat = input.required<Chat>()
 	private destroy$ = new Subject<void>()
-	messages = this.chatsService.activeChatMessages
 	r2 = inject(Renderer2)
+	groupedActiveChatMessages = this.chatsService.groupedActiveChatMessages
 
 	constructor() {
 		this.startMessagePolling()
@@ -100,37 +100,5 @@ export class ChatWorkspaceMessagesWrapperComponent {
 		const { top } = this.hostElement.nativeElement.getBoundingClientRect() // Получение координат
 		const height = window.innerHeight - top - 28 // Вычисление новой высоты
 		this.r2.setStyle(this.hostElement.nativeElement, 'height', `${height}px`) // Установка стиля высоты
-	}
-
-	getGroupedMessages() {
-		const messagesArray = this.messages() // Получение актуального значения массива сообщений
-		const groupedMessages = new Map<string, Message[]>() // Карта для хранения сгруппированных сообщений
-
-		// Получение текущей даты и даты вчера
-		const today = DateTime.now().startOf('day')
-		const yesterday = today.minus({ days: 1 })
-
-		messagesArray.forEach((message: Message) => {
-			const messageDate = DateTime.fromISO(message.createdAt, { zone: 'utc' })
-				.setZone(DateTime.local().zone)
-				.startOf('day')
-
-			// Определяем, какую метку использовать
-			let dateLabel: string
-			if (messageDate.equals(today)) {
-				dateLabel = 'Сегодня'
-			} else if (messageDate.equals(yesterday)) {
-				dateLabel = 'Вчера'
-			} else {
-				dateLabel = messageDate.toFormat('MM.dd.yyyy')
-			}
-
-			if (!groupedMessages.has(dateLabel)) {
-				groupedMessages.set(dateLabel, [])
-			}
-			groupedMessages.get(dateLabel)?.push(message)
-		})
-
-		return Array.from(groupedMessages.entries()) // Возвращает массив пар [дата, сообщения]
 	}
 }

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http'
 import { Chat, LastMessageRes, Message } from '../interfaces/chats.interface'
 import { ProfileService } from './profile.service'
 import { map, single } from 'rxjs'
+import { DateTime } from 'luxon'
 
 @Injectable({
 	providedIn: 'root'
@@ -10,20 +11,11 @@ import { map, single } from 'rxjs'
 export class ChatsService {
 	http = inject(HttpClient)
 	me = inject(ProfileService).me
-
-	activeChatMessages = signal<Message[]>([])
+	groupedActiveChatMessages = signal<[string, Message[]][]>([])
 
 	baseApiUrl = 'https://icherniakov.ru/yt-course/'
 	chatsUrl = `${this.baseApiUrl}chat/`
 	messageUrl = `${this.baseApiUrl}message/`
-
-	createChat(userId: number) {
-		return this.http.post<Chat>(`${this.chatsUrl}${userId}`, {})
-	}
-
-	getMyChats() {
-		return this.http.get<LastMessageRes[]>(`${this.chatsUrl}get_my_chats/`)
-	}
 
 	getChatById(chatId: number) {
 		return this.http.get<Chat>(`${this.chatsUrl}${chatId}`).pipe(
@@ -39,9 +31,9 @@ export class ChatsService {
 					}
 				})
 
-				// todo
-
-				this.activeChatMessages.set(patchedMessages)
+				// Группируем патченные сообщения
+				const groupedMessages = this.getGroupMessages(patchedMessages)
+				this.groupedActiveChatMessages.set(groupedMessages) // Используем новый сигнал
 
 				return {
 					...chat,
@@ -55,6 +47,35 @@ export class ChatsService {
 		)
 	}
 
+	getGroupMessages(messages: Message[]) {
+		const groupedMessages = new Map<string, Message[]>()
+
+		const today = DateTime.now().startOf('day')
+		const yesterday = today.minus({ days: 1 })
+
+		messages.forEach((message: Message) => {
+			const messageDate = DateTime.fromISO(message.createdAt, { zone: 'utc' })
+				.setZone(DateTime.local().zone)
+				.startOf('day')
+
+			let dateLabel: string
+			if (messageDate.equals(today)) {
+				dateLabel = 'Сегодня'
+			} else if (messageDate.equals(yesterday)) {
+				dateLabel = 'Вчера'
+			} else {
+				dateLabel = messageDate.toFormat('MM.dd.yyyy')
+			}
+
+			if (!groupedMessages.has(dateLabel)) {
+				groupedMessages.set(dateLabel, [])
+			}
+			groupedMessages.get(dateLabel)?.push(message)
+		})
+
+		return Array.from(groupedMessages.entries()) // Возвращает массив пар [дата, сообщения]
+	}
+
 	sendMessage(chatId: number, message: string) {
 		return this.http.post(
 			`${this.messageUrl}send/${chatId}`,
@@ -65,5 +86,13 @@ export class ChatsService {
 				}
 			}
 		)
+	}
+
+	createChat(userId: number) {
+		return this.http.post<Chat>(`${this.chatsUrl}${userId}`, {})
+	}
+
+	getMyChats() {
+		return this.http.get<LastMessageRes[]>(`${this.chatsUrl}get_my_chats/`)
 	}
 }

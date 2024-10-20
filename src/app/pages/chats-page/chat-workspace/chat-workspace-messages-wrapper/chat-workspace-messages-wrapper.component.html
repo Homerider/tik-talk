@@ -1,9 +1,7 @@
 <div class="messages-wrapper" #messagesContainer>
-  @for (groupedMessage of getGroupedMessages(); track groupedMessage) {
-
+  @for (groupedMessage of groupedActiveChatMessages(); track groupedMessage[0]) {
 		<div class="date-divider">{{ groupedMessage[0] }}</div>
     @for (message of groupedMessage[1]; track message.id) {
-
 			<app-chat-workspace-message
 				[message]="message"></app-chat-workspace-message>
     }
