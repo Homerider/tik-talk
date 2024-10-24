@@ -1,0 +1,15 @@
+:host {
+	display: grid;
+	place-content: center;
+	height: 100dvh;
+}
+
+form {
+	min-width: 600px;
+}
+
+.form-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 16px;
+}

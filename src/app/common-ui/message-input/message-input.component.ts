@@ -1,9 +1,7 @@
 import {
 	Component,
 	EventEmitter,
-	HostBinding,
 	inject,
-	input,
 	Output,
 	Renderer2
 } from '@angular/core'

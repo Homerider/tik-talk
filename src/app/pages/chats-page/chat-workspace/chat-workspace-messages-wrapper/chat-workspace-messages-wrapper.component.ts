@@ -10,7 +10,7 @@ import {
 import { ChatWorkspaceMessageComponent } from './chat-workspace-message/chat-workspace-message.component'
 import { MessageInputComponent } from '../../../../common-ui/message-input/message-input.component'
 import { ChatsService } from '../../../../data/services/chats.service'
-import { Chat, Message } from '../../../../data/interfaces/chats.interface'
+import { Chat } from '../../../../data/interfaces/chats.interface'
 import {
 	debounceTime,
 	firstValueFrom,
@@ -20,7 +20,6 @@ import {
 	timer
 } from 'rxjs'
 import { FormsModule } from '@angular/forms'
-import { DateTime } from 'luxon'
 import { NgForOf } from '@angular/common'
 
 @Component({
