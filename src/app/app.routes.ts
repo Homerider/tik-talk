@@ -19,10 +19,10 @@ export const routes: Routes = [
 			{ path: 'search', component: SearchPageComponent },
 			{ path: 'settings', component: SettingsPageComponent },
 			{ path: 'communities', component: CommunitiesPagesComponent },
-			{ path: 'chats', loadChildren: () => chatsRoutes }
+			{ path: 'chats', loadChildren: () => chatsRoutes },
+			{ path: 'experimental', component: ExperimentalComponent }
 		],
 		canActivate: [canActivateAuth]
 	},
-	{ path: 'login', component: LoginPageComponent },
-	{ path: 'experimental', component: ExperimentalComponent }
+	{ path: 'login', component: LoginPageComponent }
 ]

@@ -86,6 +86,13 @@
 	}
 }
 
+.place_work_wrapper {
+	display: grid;
+	grid-template-columns: 1fr 44px;
+	grid-gap: 20px;
+	align-items: flex-end;
+}
+
 .btn-content-save {
 	width: 130px;
 	height: 44px;

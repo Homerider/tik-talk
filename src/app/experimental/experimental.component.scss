@@ -13,3 +13,11 @@ form {
 	grid-template-columns: 1fr 1fr;
 	grid-gap: 16px;
 }
+
+.tv:not([value]) {
+	color: var(--gray-color);
+}
+
+.tv option {
+	color: var(--light-color); /* Цвет для опций */
+}

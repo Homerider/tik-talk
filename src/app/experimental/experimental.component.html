@@ -1,58 +1,46 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit($event)">
-  <h4 class="h4 mb16">Информация о клиенте</h4>
+
+  <h4 class="h4 mb16">Заявка на ремонт телевизора</h4>
 
   <label class="tt-control-label mb16">
-    Тип заявки
-    <select class="tt-input" formControlName="type">
-      <option [value]="ReceiverType.PERSON">Физическое лицо</option>
-      <option [value]="ReceiverType.LEGAL">Юридическое лицо</option>
+    Тип TV
+    <select class="tt-input tv" id="tvType">
+      <option value="" disabled selected class="placeholder">Тип телевизора</option>
+      // 'disabled selected' отключает выбор по умолчанию 'Тип телевизора'
+      <option>LED-телевизор</option>
+      <option>QLED-телевизор</option>
+      <option>LCD-телевизор</option>
+      <option>PDP-панель(плазма)</option>
+      <option>OLED-телевизор</option>
+      <option>ЭЛТ-телевизор(кинескоп)</option>
     </select>
   </label>
 
   <label class="tt-control-label mb16">
-    Имя
+    Модель
     <input
-      formControlName="name"
       class="tt-input"
       type="text"
-      placeholder="Введите имя"
+      placeholder="Марка / Модель"
     />
   </label>
 
-  @if (form.controls.name.touched && form.controls.name.hasError('required')) {
-    <small>Это поле обязательно!</small>
-  }
-
-  @if (form.controls.type.value === ReceiverType.LEGAL) {
     <label class="tt-control-label mb16">
-      ИНН
+      Причина обращения
       <input
-        formControlName="inn"
         class="tt-input"
         type="text"
-        placeholder="Введите ИНН"
+        placeholder="Описание неисправности"
       />
     </label>
-  } @else {
-    <label class="tt-control-label mb16">
-      Фамилия
-      <input
-        formControlName="lastName"
-        class="tt-input"
-        type="text"
-        placeholder="Введите фамилию"
-      />
-    </label>
-  }
 
   <div>
     <h4 class="h6 mb16">Адрес заявки</h4>
 
-    <div class="form-grid" formGroupName="address">
+    <div class="form-grid">
       <label class="tt-control-label">
         Город
         <input
-          formControlName="city"
           class="tt-input"
           type="text"
           placeholder="Город"
@@ -62,7 +50,6 @@
       <label class="tt-control-label">
         Улица
         <input
-          formControlName="street"
           class="tt-input"
           type="text"
           placeholder="Улица"
@@ -72,7 +59,6 @@
       <label class="tt-control-label">
         Дом
         <input
-          formControlName="building"
           class="tt-input"
           type="text"
           placeholder="Дом"
@@ -82,7 +68,6 @@
       <label class="tt-control-label">
         Квартира
         <input
-          formControlName="apartment"
           class="tt-input"
           type="text"
           placeholder="Квартира"

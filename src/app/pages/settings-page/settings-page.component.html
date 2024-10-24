@@ -34,8 +34,18 @@
 			<app-avatar-upload [avatarInput]="avatar"></app-avatar-upload>
 		</label>
 
+    <div class="place_work_wrapper">
+    <label class="tt-form-label">
+      <span class="tt-form-label__text">Место работы</span>
+      <input type="text" class="tt-form-input" formControlName="city" />
+    </label>
+      <button class="btn-icon" [routerLink]="['/experimental']">
+        <svg icon="job" class="svg20"></svg>
+      </button>
+    </div>
+
 		<label class="tt-form-label">
-			<span class="tt-form-label__text">Навыки (стэк)</span>
+			<span class="tt-form-label__text">Навыки (стек)</span>
 			<input type="text" class="tt-form-input" formControlName="stack" />
 		</label>
 	</div>
